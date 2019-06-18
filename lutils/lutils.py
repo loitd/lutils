@@ -1,8 +1,8 @@
 #!/usr/bin/env python
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 
-def todaystr(format="%Y/%m/%d %H%M%S"):
-    return(date.today().strftime(format))
+def todaystr(format="%Y/%m/%d %H:%M:%S"):
+    return(datetime.now().strftime(format))
 
 #yesterday
 def yesterday():
@@ -19,3 +19,6 @@ def printx(content, filepath):
             fh.write("[{0}]: {1}\r\n".format(todaystr(), content))
     except Exception as e:
         raise(e)
+
+if __name__ == "__main__":
+    print(todaystr())

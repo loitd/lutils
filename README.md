@@ -5,6 +5,15 @@ Pip: [https://pypi.org/project/lutils/](https://pypi.org/project/lutils/)
 ## Installation
 You can easily install this library with command `pip`  
 `pip install lutils`
+## Usage
+In your python file:  
+~~~
+# import printx()
+from lutils.lutils import printx
+
+# using printx. If file not exist
+printx("abc", "test.log")
+~~~
 ## For developers
 To build this package:  
 * `pip install --upgrade pip setuptools wheel`
