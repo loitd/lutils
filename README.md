@@ -28,5 +28,5 @@ Upload to PyPI:
 or
 * `python -m twine upload --skip-existing -u loitd --repository-url https://upload.pypi.org/legacy/ dist/*`  
 
-Easy upload with keering:  
+Easy upload with keyring:  
 `python -m keyring set https://upload.pypi.org/legacy/ loitd`
