@@ -9,8 +9,8 @@ You can easily install this library with command `pip`
 To build this package:  
 * `pip install --upgrade pip setuptools wheel`
 * `pip install tqdm`
-* `pip install --user --upgrade twine`
+* `pip install --user --upgrade twine`  
 Compiling this package:  
-* `python setup.py bdist_wheel`
+* `python setup.py bdist_wheel`  
 Upload to PyPI:  
-* `python -m twine upload dist/*`
+* `python -m twine upload dist/*`  

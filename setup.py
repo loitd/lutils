@@ -3,7 +3,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 setuptools.setup(
      name='lutils',  
-     version='0.4',
+     version='0.5',
      scripts=['lutils.py'] ,
      author="Tran Duc Loi",
      author_email="loitranduc@gmail.com",
