@@ -16,6 +16,6 @@ def printx(content, filepath):
     try:
         print("{0}".format(content))
         with open(filepath, "a+") as fh:
-            fh.write("[{0}]: {1}".format(todaystr(), content))
+            fh.write("[{0}]: {1}\r\n".format(todaystr(), content))
     except Exception as e:
         raise(e)

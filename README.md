@@ -10,8 +10,10 @@ To build this package:
 * `pip install --upgrade pip setuptools wheel`
 * `pip install tqdm`
 * `pip install --user --upgrade twine keyring`  
+
 Compiling this package:  
 * `python setup.py sdist bdist_wheel`  
+
 Upload to PyPI:  
 * `python -m twine upload --skip-existing dist/*`  
 or
