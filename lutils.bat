@@ -1,1 +1,0 @@
-echo "hey there, this file just print a console message to you to know that you're install it right!"

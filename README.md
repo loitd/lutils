@@ -9,8 +9,13 @@ You can easily install this library with command `pip`
 To build this package:  
 * `pip install --upgrade pip setuptools wheel`
 * `pip install tqdm`
-* `pip install --user --upgrade twine`  
+* `pip install --user --upgrade twine keyring`  
 Compiling this package:  
-* `python setup.py bdist_wheel`  
+* `python setup.py sdist bdist_wheel`  
 Upload to PyPI:  
-* `python -m twine upload dist/*`  
+* `python -m twine upload --skip-existing dist/*`  
+or
+* `python -m twine upload --skip-existing -u loitd --repository-url https://upload.pypi.org/legacy/ dist/*`  
+
+Easy upload with keering:  
+`python -m keyring set https://upload.pypi.org/legacy/ loitd`
