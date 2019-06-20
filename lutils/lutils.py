@@ -22,7 +22,7 @@ def yesterdaystr(format="%Y/%m/%d"):
     """Print yesterday datetime in string format."""
     return(yesterday().strftime(format))
 
-# @deprecated("This function is deprecated, please use 'printlog()' function in this library instead")
+@deprecated("This function is deprecated, please use 'printlog()' function in this library instead")
 def printx(content, filepath="./log.txt"):
     """Print to screen output AND write to log file. From version 1.0, by default log file path is: ./log.txt
     Will be moved to printlog(). Please use printlog() instead of printx() with the same syntax."""
@@ -37,13 +37,14 @@ def printlog(content, filepath="./log.txt"):
     """Print to screen output AND write to log file. Added from version 1.0.
     By default log file path is: ./log.txt"""
     try:
-        print("{0}".format(content))
+        print("[{0}]: {1}".format(datetimestr(),content))
         with open(filepath, "a+") as fh:
             fh.write("[{0}]: {1}\r\n".format(datetimestr(), content))
     except Exception as e:
         raise(e)
 
 if __name__ == "__main__":
-    print(datetimestr())
-    printx("abc")
-    printlog("abc")
+#     print(datetimestr())
+#     printx("abc")
+#     printlog("abc")
+        pass

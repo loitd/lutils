@@ -2,17 +2,32 @@
 ## A Loitd's Public Utilities Project
 Website: [https://inneka.com](https://inneka.com)  
 Pip: [https://pypi.org/project/lutils/](https://pypi.org/project/lutils/)
+Git: [https://github.com/loitd/lutils/](https://github.com/loitd/lutils/)
 ## Installation
 You can easily install this library with command `pip`  
 `pip install lutils`
 ## Usage
 In your python file:  
 ~~~
-# import printx()
-from lutils.lutils import printx
+# import printlog()
+from lutils.lutils import printlog
 
 # using printx. If file not exist
-printx("abc", "test.log")
+printlog("abc", "test.log")
+~~~
+To connect SSH to Linux servers and get disk space status
+~~~
+# import LServer
+from lutils.lutils import LServer
+
+# init instance
+srv = LServer()
+
+# connect to server
+srv.connect(ip="192.168.1.2", uname="root", pwd="123456")
+
+# get disk space
+srv.getdiskspace()
 ~~~
 ## For developers
 To build this package:  
