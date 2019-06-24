@@ -28,7 +28,7 @@ def printx(content, filepath="./log.txt"):
     Will be moved to printlog(). Please use printlog() instead of printx() with the same syntax."""
     try:
         print("{0}".format(content))
-        with open(filepath, "a+") as fh:
+        with open(filepath, "a+", encoding="utf-8") as fh:
             fh.write("[{0}]: {1}\r\n".format(datetimestr(), content))
     except Exception as e:
         raise(e)
@@ -37,8 +37,9 @@ def printlog(content, filepath="./log.txt"):
     """Print to screen output AND write to log file. Added from version 1.0.
     By default log file path is: ./log.txt"""
     try:
+        content = u"{0}".format(content) #.encode("utf8")
         print("[{0}]: {1}".format(datetimestr(),content))
-        with open(filepath, "a+") as fh:
+        with open(filepath, "a+", encoding="utf-8") as fh:
             fh.write("[{0}]: {1}\r\n".format(datetimestr(), content))
     except Exception as e:
         raise(e)
@@ -46,5 +47,5 @@ def printlog(content, filepath="./log.txt"):
 if __name__ == "__main__":
 #     print(datetimestr())
 #     printx("abc")
-#     printlog("abc")
+        printlog("Có những chiều thành phố mưa bay!")
         pass

@@ -7,11 +7,12 @@ Git: [https://github.com/loitd/lutils/](https://github.com/loitd/lutils/)
 You can easily install this library with command `pip`  
 `pip install lutils`  
 with specific version:  
-`pip install lutils~=1.2`
+`pip install lutils~=1.4`
 Update existing installation:
-`pipenv update lutils`  
-or  
-`pip install --upgrade lutils`
+`pipenv uninstall lutils`  
+and  
+`pipenv install lutils`  
+Note: support Unicode from version 1.4. Then please update to newest version.
 ## Usage
 In your python file:  
 ~~~
