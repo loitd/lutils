@@ -3,7 +3,11 @@ import sys
 from lutils import printlog
 
 class LServer(object):
-    """docstring for LServer"""
+    """LServer is a class for interacting with Linux server via SSH.
+Usage: 
+srv = LServer()
+srv.connect(ip="192.168.64.76", uname="root", pwd="123456")
+srv.getdiskspace()"""
     def __init__(self):
         super(LServer, self).__init__()
         self.client = paramiko.SSHClient()
@@ -12,7 +16,11 @@ class LServer(object):
         self.error = 'No error founds while connecting'
         # printlog(self.error)
 
+    def __del__(self):
+        self.client.close()
+
     def connect(self, ip, uname, pw):
+        """connect to server with ip, username, password"""
         try:
             self.client.connect(ip, username=uname, password=pw)
             self.chan = self.client.invoke_shell()
@@ -27,6 +35,7 @@ class LServer(object):
             return False
 
     def getfeedback(self, regcode = ']#'):
+        """getfeedback from server command line."""
         try:
             printlog("Waiting for reply until timeout...")
             buff = ''
@@ -56,13 +65,13 @@ class LServer(object):
             printlog("Unable to accomply because channel is NULL")
             return "Unable to accomply because channel is NULL"
 
-    def __del__(self):
-        self.client.close()
-
 if __name__ == "__main__":
 #     print(datetimestr())
 #     printx("abc")
 #     printlog("abc")
     srv = LServer()
-    srv.connect("192.168.64.76", "root", "123456")
+    srv.connect(ip="192.168.64.76", uname="root", pw="123456")
     srv.getdiskspace()
+
+
+

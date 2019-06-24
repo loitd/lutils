@@ -5,7 +5,13 @@ Pip: [https://pypi.org/project/lutils/](https://pypi.org/project/lutils/)
 Git: [https://github.com/loitd/lutils/](https://github.com/loitd/lutils/)
 ## Installation
 You can easily install this library with command `pip`  
-`pip install lutils`
+`pip install lutils`  
+with specific version:  
+`pip install lutils~=1.2`
+Update existing installation:
+`pipenv update lutils`  
+or  
+`pip install --upgrade lutils`
 ## Usage
 In your python file:  
 ~~~

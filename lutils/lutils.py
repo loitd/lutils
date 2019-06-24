@@ -6,7 +6,7 @@
 # Documented follow PEP257 
 # -------------------------------------------------------
 from datetime import date, timedelta, datetime
-from deprecated import deprecated
+# from deprecated import deprecated
 
 
 def datetimestr(format="%Y/%m/%d %H:%M:%S"):
@@ -22,7 +22,7 @@ def yesterdaystr(format="%Y/%m/%d"):
     """Print yesterday datetime in string format."""
     return(yesterday().strftime(format))
 
-@deprecated("This function is deprecated, please use 'printlog()' function in this library instead")
+# @deprecated("This function is deprecated, please use 'printlog()' function in this library instead")
 def printx(content, filepath="./log.txt"):
     """Print to screen output AND write to log file. From version 1.0, by default log file path is: ./log.txt
     Will be moved to printlog(). Please use printlog() instead of printx() with the same syntax."""
