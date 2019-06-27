@@ -77,7 +77,8 @@ srv.getdiskspace()"""
             ss = r1.split(r"\r\n")[1].split()
             xs = r1.split(r"\r\n")[2].split()
             # printlog(ss)
-            percentt = '<span style="color: green;">{0}</span>'.format(xs[4]) if xs[4] < "50%" else '<span style="color: red;">{0}</span>'.format(xs[4])
+            percentt = float(xs[4].split("%")[0])
+            percentt = '<strong style="color: green;">{0}</strong>'.format(xs[4]) if percentt < 50 else '<strong style="color: red;">{0}</strong>'.format(xs[4])
             ret = """<table  border="1" style="width:100%" align="center"><tbody>
 <tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td></tr>
 <tr><td>{6}</td><td>{7}</td><td>{8}</td><td>{9}</td><td>{10}</td><td>{11}</td></tr>
