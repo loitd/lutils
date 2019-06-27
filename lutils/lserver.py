@@ -1,6 +1,6 @@
 import paramiko, socket
 import sys
-from lutils.lutils import printlog
+from lutils import printlog
 
 class LServer(object):
     """LServer is a class for interacting with Linux server via SSH.
@@ -37,15 +37,15 @@ srv.getdiskspace()"""
     def getfeedback(self, regcode = ']#'):
         """getfeedback from server command line."""
         try:
-            printlog("Waiting for reply until timeout...")
+            printlog("[getfeedback] Waiting for reply until timeout...")
             buff = ''
             while buff.find(regcode) == -1:
                     resp = self.chan.recv(9999999)
                     buff = "{0}{1}".format(buff, resp)
-                    printlog(buff)
+                    # printlog(buff)
             return buff
         except socket.timeout:
-            printlog("Time out while waiting for response from server. Program will exits.")
+            printlog("[getfeedback] Time out while waiting for response from server. Program will exits.")
             sys.exit(1)
         except Exception as e:
             raise(e)
@@ -59,8 +59,30 @@ srv.getdiskspace()"""
             self.chan.send(cmd)
             r1 = self.getfeedback()
             self.chan.send("exit\n")
-            printlog(r1)
+            # printlog(r1)
             return r1
+        else:
+            printlog("Unable to accomply because channel is NULL")
+            return "Unable to accomply because channel is NULL"
+    
+    def getDiskSpaceHtml(self, cmd="df -h /\n"): 
+        #Remember not add r"" as we need to translate to Enter button pressed"
+        if self.chan is not None:
+            self.getfeedback()
+            printlog("Begin get disk space ...")
+            self.chan.send(cmd)
+            r1 = self.getfeedback()
+            self.chan.send("exit\n")
+            # printlog(r1)
+            ss = r1.split(r"\r\n")[1].split()
+            xs = r1.split(r"\r\n")[2].split()
+            # printlog(ss)
+            percentt = xs[4] if xs[4] < "50%" else '<span style="color: red;">{0}</span>'.format(xs[4])
+            ret = """<table><tbody>
+<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td></tr>
+<tr><td>{6}</td><td>{7}</td><td>{8}</td><td>{9}</td><td>{10}</td><td>{11}</td></tr>
+</tbody></table>""".format(ss[0], ss[1], ss[2], ss[3], ss[4], ss[5], xs[0], xs[1], xs[2], xs[3], percentt, xs[5])
+            return ret
         else:
             printlog("Unable to accomply because channel is NULL")
             return "Unable to accomply because channel is NULL"
@@ -70,8 +92,9 @@ if __name__ == "__main__":
 #     printx("abc")
 #     printlog("abc")
     srv = LServer()
-    srv.connect(ip="192.168.64.76", uname="root", pw="123456")
-    srv.getdiskspace()
+    srv.connect(ip="172.16.10.84", uname="root", pw="db84$$$")
+    spaces = srv.getDiskSpaceHtml("df -h / \n")
+    print(spaces)
 
 
 
