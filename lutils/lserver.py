@@ -1,6 +1,6 @@
 import paramiko, socket
 import sys
-from lutils import printlog
+from lutils.lutils import printlog
 
 class LServer(object):
     """LServer is a class for interacting with Linux server via SSH.

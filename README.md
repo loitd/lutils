@@ -1,8 +1,9 @@
 # lutils
-## A Loitd's Public Utilities Project
+## A Loitd's Public Utilities Library Project
 Website: [https://inneka.com](https://inneka.com)  
 Pip: [https://pypi.org/project/lutils/](https://pypi.org/project/lutils/)
 Git: [https://github.com/loitd/lutils/](https://github.com/loitd/lutils/)
+JS: [https://github.com/loitd/lutilsjs/](https://github.com/loitd/lutilsjs/)
 ## Installation
 You can easily install this library with command `pip`  
 `pip install lutils`  
@@ -12,7 +13,8 @@ Update existing installation:
 `pipenv uninstall lutils`  
 and  
 `pipenv install lutils`  
-Note: support Unicode from version 1.4. Then please update to newest version.
+### Note
+Support Unicode from version 1.4. Then please update to newest version.
 ## Usage
 In your python file:  
 ~~~
