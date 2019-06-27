@@ -69,20 +69,29 @@ srv.getdiskspace()"""
         #Remember not add r"" as we need to translate to Enter button pressed"
         if self.chan is not None:
             self.getfeedback()
-            printlog("Begin get disk space ...")
+            printlog("Begin get disk space with command: {0}...".format(cmd))
             self.chan.send(cmd)
             r1 = self.getfeedback()
             self.chan.send("exit\n")
-            # printlog(r1)
+            printlog(r1)
             ss = r1.split(r"\r\n")[1].split()
             xs = r1.split(r"\r\n")[2].split()
-            # printlog(ss)
-            percentt = float(xs[4].split("%")[0])
-            percentt = '<strong style="color: green;">{0}</strong>'.format(xs[4]) if percentt < 50 else '<strong style="color: red;">{0}</strong>'.format(xs[4])
-            ret = """<table  border="1" style="width:100%" align="center"><tbody>
+            # printlog(xs)
+            if len(xs) == 1:
+                ys = r1.split(r"\r\n")[3].split()
+                percentt = float(ys[3].split("%")[0])
+                percentt = '<strong style="color: green;">{0}</strong>'.format(xs[4]) if percentt < 50 else '<strong style="color: red;">{0}</strong>'.format(xs[4])
+                ret = """<table  border="1" style="width:100%" align="center"><tbody>
 <tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td></tr>
 <tr><td>{6}</td><td>{7}</td><td>{8}</td><td>{9}</td><td>{10}</td><td>{11}</td></tr>
-</tbody></table>""".format(ss[0], ss[1], ss[2], ss[3], ss[4], ss[5], xs[0], xs[1], xs[2], xs[3], percentt, xs[5])
+</tbody></table>""".format(ss[0], ss[1], ss[2], ss[3], ss[4], ss[5], xs[0], ys[0], ys[1], ys[2], percentt, ys[4])
+            else:
+                percentt = float(xs[4].split("%")[0])
+                percentt = '<strong style="color: green;">{0}</strong>'.format(xs[4]) if percentt < 50 else '<strong style="color: red;">{0}</strong>'.format(xs[4])
+                ret = """<table  border="1" style="width:100%" align="center"><tbody>
+    <tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td></tr>
+    <tr><td>{6}</td><td>{7}</td><td>{8}</td><td>{9}</td><td>{10}</td><td>{11}</td></tr>
+    </tbody></table>""".format(ss[0], ss[1], ss[2], ss[3], ss[4], ss[5], xs[0], xs[1], xs[2], xs[3], percentt, xs[5])
             return ret
         else:
             printlog("Unable to accomply because channel is NULL")
