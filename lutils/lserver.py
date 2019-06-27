@@ -52,11 +52,11 @@ srv.getdiskspace()"""
             # printlog(e)
             # sys.exit(1)
     
-    def  getdiskspace(self):
+    def  getdiskspace(self, cmd="df -h\n"):
         if self.chan is not None:
             self.getfeedback()
             printlog("Begin get disk space ...")
-            self.chan.send("df -h\n")
+            self.chan.send(cmd)
             r1 = self.getfeedback()
             self.chan.send("exit\n")
             printlog(r1)
