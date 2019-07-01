@@ -22,6 +22,33 @@ def yesterdaystr(format="%Y/%m/%d"):
     """Print yesterday datetime in string format."""
     return(yesterday().strftime(format))
 
+def firstdayofthismonth():
+        """Return first day of this month"""
+        today=datetime.today()
+        firstday = today.replace(day=1)
+        return firstday
+
+def thismonthstr(format="%Y/%m"):
+        """this month to print"""
+        return firstdayofthismonth().strftime(format)
+
+def previousmonth():
+        """Last month print"""
+        prevmonth = firstdayofthismonth() - timedelta(days=1)
+        return prevmonth
+
+def previousmonthstr(format="%Y/%m"):
+        """Previous month to print"""
+        return previousmonth().strftime(format)
+
+def nextmonth():
+        """Next month"""
+        return firstdayofthismonth() + timedelta(days=31)
+
+def nextmonthstr(format="%Y/%m"):
+        """Next month str"""
+        return nextmonth().strftime(format)
+
 # @deprecated("This function is deprecated, please use 'printlog()' function in this library instead")
 def printx(content, filepath="./log.txt"):
     """Print to screen output AND write to log file. From version 1.0, by default log file path is: ./log.txt
