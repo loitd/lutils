@@ -1,6 +1,7 @@
 import paramiko, socket
 import sys
 from lutils.lutils import printlog
+import requests
 
 class LServer(object):
     """LServer is a class for interacting with Linux server via SSH.
@@ -97,14 +98,42 @@ srv.getdiskspace()"""
             printlog("Unable to accomply because channel is NULL")
             return "Unable to accomply because channel is NULL"
 
+class LWebservice(object):
+    def __init__(self, *args, **kwargs):
+        return super().__init__(*args, **kwargs)
+    
+    def check(self, uri, method="get"):
+        try:
+            if (method=="get"):
+                req = requests.get(uri)
+                print(req.status_code)
+                if (req.status_code in [200,302]):
+                    return True
+                else:
+                    return False
+            elif (method == "post"):
+                req = requests.post(uri, data = {'epay':'infras'})
+                print(req.status_code)
+                if (req.status_code in [200,302]):
+                    return True
+                else:
+                    return False
+        except Exception as e:
+            print(e)
+            return False
+
 if __name__ == "__main__":
-#     print(datetimestr())
-#     printx("abc")
-#     printlog("abc")
-    srv = LServer()
-    srv.connect(ip="172.16.10.84", uname="root", pw="db84$$$")
-    spaces = srv.getDiskSpaceHtml("df -h / \n")
-    print(spaces)
+    # Test LServer
+    # srv = LServer()
+    # srv.connect(ip="172.16.10.84", uname="root", pw="db84$$$")
+    # spaces = srv.getDiskSpaceHtml("df -h / \n")
+    # print(spaces)
+
+    # Test LWS
+    lw = LWebservice()
+    print(lw.check("http://abc.com/services/Interfaces?wsdl"))
+    print(lw.check("http://test.com/Interfaces?wsdl"))
+    print(lw.check("http://abc.com", "post"))
 
 
 

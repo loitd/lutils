@@ -9,6 +9,7 @@ verify_ssl = true
 lutils = "*"
 paramiko = "*"
 deprecated = "*"
+requests = "*"
 
 [requires]
 python_version = "3"
