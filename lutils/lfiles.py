@@ -1,5 +1,5 @@
 import zipfile
-import os
+import os, json
 
 def compressFiles(filepaths=[], output="./lfiles_compressed.zip"):
     try:
@@ -14,5 +14,25 @@ def compressFiles(filepaths=[], output="./lfiles_compressed.zip"):
         print(e)
         pass
 
+# {
+#   "keyname":[1,2,3], 
+#   "key2": [1,2,3]
+# }
+def readConfig(param, file="./config.file"):
+    try:
+        with open(file, "r+") as fh:
+            content = fh.read()
+            print(content)
+    except Exception as e:
+        raise(e)
+        pass
+
+def writeConfig(param, file="./config.file"):
+    try:
+        pass
+    except Exception as e:
+        pass
+
 if __name__ == "__main__":
-    compressFiles(filepaths=["./log.txt"])
+    # compressFiles(filepaths=["./log.txt"])
+    readConfig("key1")

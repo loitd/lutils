@@ -6,6 +6,7 @@
 # Documented follow PEP257 
 # -------------------------------------------------------
 from datetime import date, timedelta, datetime
+import time, os
 # from deprecated import deprecated
 
 
@@ -71,8 +72,32 @@ def printlog(content, filepath="./log.txt"):
     except Exception as e:
         raise(e)
 
+def printwait(content, timewait, filepath="./log.txt", end="", sym="."):
+        """Print incremental symbol while waiting tasks + write to logfile also with incremental symbol"""
+        try:
+                content = u"{0}".format(content) #.encode("utf8")
+                sym = u"{0}".format(sym)
+                print("[{0}]: {1} ".format(datetimestr(),content), end=end, flush=True)
+                with open(filepath, "a+", encoding="utf-8", newline='') as fh:
+                        fh.write("[{0}]: {1} ".format(datetimestr(), content))
+                        # first do f.flush(), and then do os.fsync(f.fileno()), 
+                        # to ensure that all internal buffers associated with f are written to disk.
+                        fh.flush()
+                        os.fsync(fh.fileno())
+                        for i in range(timewait):
+                                time.sleep(1)
+                                print(sym, end=end, flush=True)
+                                fh.write(sym)
+                                fh.flush()
+                                os.fsync(fh.fileno())
+                        print()
+                        fh.write("\r\n")
+        except Exception as e:
+                raise(e)
+    
 if __name__ == "__main__":
 #     print(datetimestr())
 #     printx("abc")
-        printlog("Có những chiều thành phố mưa bay!")
+        # printlog("Có những chiều thành phố mưa bay!")
+        printwait("Xin chờ 1 lát", 10)
         pass
