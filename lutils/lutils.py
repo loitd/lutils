@@ -19,9 +19,18 @@ def yesterday():
     """Print yesterday date in datetime value"""
     return (date.today() - timedelta(days=1))
 
+#yesterday
+def backto(dayback=1):
+    """Print yesterday date in datetime value"""
+    return (date.today() - timedelta(days=dayback))
+
 def yesterdaystr(format="%Y/%m/%d"):
     """Print yesterday datetime in string format."""
     return(yesterday().strftime(format))
+
+def backtostr(dayback=1, format="%Y/%m/%d"):
+    """Print yesterday datetime in string format."""
+    return(dayback(dayback).strftime(format))
 
 def firstdayofthismonth():
         """Return first day of this month"""
