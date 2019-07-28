@@ -75,9 +75,9 @@ def printlog(content, filepath="./log.txt"):
     """Print to screen output AND write to log file. Added from version 1.0.
     By default log file path is: ./log.txt"""
     try:
-        tname = threading.currentThread().getName()
+        tname = threading.currentThread().getName()[:5]
         content = u"{0}".format(content) #.encode("utf8")
-        print("[{0}]: {1}".format(datetimestr(),content))
+        print("[{0}][{1}]: {2}".format(tname, datetimestr(),content))
         with open(filepath, "a+", encoding="utf-8") as fh:
             fh.write("[{0}][{1}]: {2}\r\n".format(tname, datetimestr(), content))
     except Exception as e:
@@ -87,10 +87,10 @@ def printlog(content, filepath="./log.txt"):
 def printwait(content, timewait, filepath="./log.txt", end="", sym="."):
         """Print incremental symbol while waiting tasks + write to logfile also with incremental symbol"""
         try:
-                tname = threading.currentThread().getName()
+                tname = threading.currentThread().getName()[:5]
                 content = u"{0}".format(content) #.encode("utf8")
                 sym = u"{0}".format(sym)
-                print("[{0}]: {1} ".format(datetimestr(),content), end=end, flush=True)
+                print("[{0}][{1}]: {2} ".format(tname, datetimestr(),content), end=end, flush=True)
                 with open(filepath, "a+", encoding="utf-8", newline='') as fh:
                         fh.write("[{0}][{1}]: {2} ".format(tname, datetimestr(), content))
                         # first do f.flush(), and then do os.fsync(f.fileno()), 
