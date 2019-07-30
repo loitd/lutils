@@ -6,7 +6,7 @@
 # Documented follow PEP257 
 # -------------------------------------------------------
 from datetime import date, timedelta, datetime
-import time, os, threading
+import time, os, threading, platform
 # from deprecated import deprecated
 
 
@@ -75,11 +75,12 @@ def printlog(content, filepath="./log.txt"):
     """Print to screen output AND write to log file. Added from version 1.0.
     By default log file path is: ./log.txt"""
     try:
+        cname = platform.node()[:10]
         tname = threading.currentThread().getName()[:5]
         content = u"{0}".format(content) #.encode("utf8")
-        print("[{0}][{1}]: {2}".format(tname, datetimestr(),content))
+        print("[{0}][{1}][{2}]: {3}".format(cname, tname, datetimestr(),content))
         with open(filepath, "a+", encoding="utf-8") as fh:
-            fh.write("[{0}][{1}]: {2}\r\n".format(tname, datetimestr(), content))
+            fh.write("[{0}][{1}][{2}]: {3}\r\n".format(cname, tname, datetimestr(), content))
     except Exception as e:
         raise(e)
 
