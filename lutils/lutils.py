@@ -6,7 +6,7 @@
 # Documented follow PEP257 
 # -------------------------------------------------------
 from datetime import date, timedelta, datetime
-import time, os, threading, platform
+import time, os, threading, platform, json
 # from deprecated import deprecated
 
 
@@ -109,10 +109,38 @@ def printwait(content, timewait, filepath="./log.txt", end="", sym="."):
                         fh.write("\r\n")
         except Exception as e:
                 raise(e)
+
+def rconfig(filepath):
+        """Read config file
+        Available since > 2.9.3"""
+        try:
+                with open(filepath, "r+", encoding="utf-8") as fh:
+                        rstl = fh.read()
+                        rstl = json.loads(rstl)
+                        return rstl
+        except Exception as e:
+                raise(e)
+        return False
+
+def wconfig(content, filepath):
+        """Write config file
+        Available since > 2.9.3"""
+        try:
+                with open(filepath, "w+", encoding="utf-8") as fh:
+                        content = json.dumps(content)
+                        fh.write(content)
+                return True
+        except Exception as e:
+                raise(e)
+        return False
+
     
 if __name__ == "__main__":
 #     print(datetimestr())
 #     printx("abc")
         # printlog("Có những chiều thành phố mưa bay!")
-        printwait("Xin chờ 1 lát", 10)
-        pass
+        # printwait("Xin chờ 1 lát", 10)
+        # pass
+        print(rconfig("./config")['currentpos'])
+        content = {"currentpos": "java::1::1"}
+        wconfig(content, "./config")
