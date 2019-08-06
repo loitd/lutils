@@ -99,7 +99,8 @@ srv.getdiskspace()"""
             printlog("Unable to accomply because channel is NULL")
             return "Unable to accomply because channel is NULL"
     
-    def checkProcess(self, cmd="systemctl status sshd | grep Active\n"):
+    def checkProcess(self, cmd="systemctl status sshd | grep Active\n", evid="active (running)"):
+        """Check process running."""
         if self.chan is not None:
             self.getfeedback()
             printlog("Begin check process with command: {0}".format(cmd))
@@ -107,7 +108,7 @@ srv.getdiskspace()"""
             r1 = self.getfeedback()
             self.chan.send("exit\n")
             printlog(r1)
-            if ("active (running)" in r1):
+            if (evid in r1):
                 printlog("The process is alive")
                 return True
             else:

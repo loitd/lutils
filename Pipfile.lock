@@ -114,11 +114,11 @@
         },
         "deprecated": {
             "hashes": [
-                "sha256:2f293eb0eee34b1fcf3da530fe8fc4b0d71d43ddc2dc78e2ffb444b6c0868557",
-                "sha256:749f6cdcfbdc3f79258f8154bad43fced95adc632c337675d0385959895894bc"
+                "sha256:a515c4cf75061552e0284d123c3066fbbe398952c87333a92b8fc3dd8e4f9cc1",
+                "sha256:b07b414c8aac88f60c1d837d21def7e83ba711052e03b3cbaff27972567a8f8d"
             ],
             "index": "pypi",
-            "version": "==1.2.5"
+            "version": "==1.2.6"
         },
         "idna": {
             "hashes": [
@@ -129,11 +129,11 @@
         },
         "lutils": {
             "hashes": [
-                "sha256:193b2e68f8049e4f1892be9a6af182917ea4f3eea54fd535ae244aa920ba58e6",
-                "sha256:9c9f3f58abc4ec451adbfa7220a22d5ee95f27be364b852f91c62c65c2cea365"
+                "sha256:0fc64bc5c10e06f59c8251bd6e6852aa4427525284cb4c58fb9b16431eb27bbd",
+                "sha256:77a98bd2fbdcaf33140cd80b948a4cf5df491f80bfb59dbdb389165f53f25e55"
             ],
             "index": "pypi",
-            "version": "==2.3"
+            "version": "==2.9.4"
         },
         "paramiko": {
             "hashes": [
