@@ -1,6 +1,7 @@
 import paramiko, socket
 import sys
 from lutils.lutils import printlog
+# from lutils import printlog
 import requests
 
 class LServer(object):
@@ -97,6 +98,25 @@ srv.getdiskspace()"""
         else:
             printlog("Unable to accomply because channel is NULL")
             return "Unable to accomply because channel is NULL"
+    
+    def checkProcess(self, cmd="systemctl status sshd | grep Active\n"):
+        if self.chan is not None:
+            self.getfeedback()
+            printlog("Begin check process with command: {0}".format(cmd))
+            self.chan.send(cmd)
+            r1 = self.getfeedback()
+            self.chan.send("exit\n")
+            printlog(r1)
+            if ("active (running)" in r1):
+                printlog("The process is alive")
+                return True
+            else:
+                printlog("The process is DIED")
+                return False
+        else:
+            printlog("Unable to accomply because channel is NULL")
+            return False
+            
 
 class LWebservice(object):
     def __init__(self, *args, **kwargs):
@@ -124,16 +144,19 @@ class LWebservice(object):
 
 if __name__ == "__main__":
     # Test LServer
-    # srv = LServer()
-    # srv.connect(ip="172.16.10.84", uname="root", pw="db84$$$")
+    srv = LServer()
+    srv.connect(ip="172.16.10.84", uname="root", pw="db84$$$")
     # spaces = srv.getDiskSpaceHtml("df -h / \n")
     # print(spaces)
+    srv.checkProcess()
 
     # Test LWS
-    lw = LWebservice()
-    print(lw.check("http://abc.com/services/Interfaces?wsdl"))
-    print(lw.check("http://test.com/Interfaces?wsdl"))
-    print(lw.check("http://abc.com", "post"))
+    # lw = LWebservice()
+    # print(lw.check("http://abc.com/services/Interfaces?wsdl"))
+    # print(lw.check("http://test.com/Interfaces?wsdl"))
+    # print(lw.check("http://abc.com", "post"))
+    
+    pass
 
 
 
