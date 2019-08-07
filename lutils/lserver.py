@@ -1,7 +1,7 @@
 import paramiko, socket
 import sys
-# from lutils.lutils import printlog
-from lutils import printlog
+from lutils.lutils import printlog
+# from lutils import printlog
 import requests
 
 class LServer(object):
