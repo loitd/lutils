@@ -103,19 +103,19 @@ srv.getdiskspace()"""
         """Check process running."""
         if self.chan is not None:
             self.getfeedback()
-            printlog("Begin check process with command: {0}".format(cmd))
+            # printlog("Begin check process with command: {0}".format(cmd))
             self.chan.send(cmd)
             r1 = self.getfeedback()
             self.chan.send("exit\n")
-            printlog(r1)
+            # printlog(r1)
             if (evid in r1):
-                printlog("The process is alive")
+                printlog("[checkProcess] The process is ALIVE")
                 return True
             else:
-                printlog("The process is DIED")
+                printlog("[checkProcess] The process is DIED")
                 return False
         else:
-            printlog("Unable to accomply because channel is NULL")
+            printlog("[checkProcess] Unable to accomply because channel is NULL")
             return False
             
 
