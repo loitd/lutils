@@ -1,7 +1,7 @@
 import paramiko, socket
 import sys
-from lutils.lutils import printlog
-# from lutils import printlog
+# from lutils.lutils import printlog
+from lutils import printlog
 import requests
 
 class LServer(object):
@@ -21,12 +21,12 @@ srv.getdiskspace()"""
     def __del__(self):
         self.client.close()
 
-    def connect(self, ip, uname, pw):
+    def connect(self, ip, uname, pw, debug=False):
         """connect to server with ip, username, password"""
         try:
             self.client.connect(ip, username=uname, password=pw)
             self.chan = self.client.invoke_shell()
-            printlog("Successfull connected to %s"%ip)
+            if debug == True: printlog("Successfull connected to %s"%ip)
             self.chan.settimeout(5.0)
             self.error = 'No error founds while connecting'
             return True
@@ -36,10 +36,10 @@ srv.getdiskspace()"""
             printlog(e)
             return False
 
-    def getfeedback(self, regcode = ']#'):
+    def getfeedback(self, regcode = ']#', debug=False):
         """getfeedback from server command line."""
         try:
-            printlog("[getfeedback] Waiting for reply until timeout...")
+            if debug: printlog("[getfeedback] Waiting for reply until timeout...")
             buff = ''
             while buff.find(regcode) == -1:
                     resp = self.chan.recv(9999999)
@@ -99,15 +99,15 @@ srv.getdiskspace()"""
             printlog("Unable to accomply because channel is NULL")
             return "Unable to accomply because channel is NULL"
     
-    def checkProcess(self, cmd="systemctl status sshd | grep Active\n", evid="active (running)"):
+    def checkProcess(self, cmd="systemctl status sshd | grep Active\n", evid="active (running)", debug=False):
         """Check process running."""
         if self.chan is not None:
-            self.getfeedback()
-            # printlog("Begin check process with command: {0}".format(cmd))
+            self.getfeedback(debug=debug)
+            if debug: printlog("Begin check process with command: {0}".format(cmd))
             self.chan.send(cmd)
-            r1 = self.getfeedback()
+            r1 = self.getfeedback(debug=debug)
             self.chan.send("exit\n")
-            # printlog(r1)
+            if debug: printlog(r1)
             if (evid in r1):
                 printlog("[checkProcess] The process is ALIVE")
                 return True
