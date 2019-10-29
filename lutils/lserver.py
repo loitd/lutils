@@ -42,7 +42,7 @@ srv.getdiskspace()"""
             if debug: printlog("[getfeedback] Waiting for reply until timeout...")
             buff = ''
             while buff.find(regcode) == -1:
-                    resp = self.chan.recv(9999999)
+                    resp = self.chan.recv(9999999).decode("utf-8")
                     buff = "{0}{1}".format(buff, resp)
                     # printlog(buff)
             return buff
@@ -53,6 +53,19 @@ srv.getdiskspace()"""
             raise(e)
             # printlog(e)
             # sys.exit(1)
+    
+    def runcmd(self, cmd, regcode=']#', debug=False):
+        try:
+            if self.chan is not None:
+                self.getfeedback()
+                printlog("Begin runcmd: {0}".format(cmd))
+                self.chan.send(cmd)
+                r1 = self.getfeedback()
+                self.chan.send("exit\n")
+                # printlog(r1)
+                return r1
+        except Exception as e:
+            raise(e)
     
     def  getdiskspace(self, cmd="df -h\n"):
         if self.chan is not None:
