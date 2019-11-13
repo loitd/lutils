@@ -6,7 +6,7 @@
 # Documented follow PEP257 
 # -------------------------------------------------------
 from datetime import date, timedelta, datetime
-import time, os, threading, platform, json
+import time, os, threading, platform, json, sys
 # from deprecated import deprecated
 
 
@@ -85,6 +85,7 @@ def printlog(content, filepath="./log.txt"):
         raise(e)
 
 # from ver 2.8 added threadname
+# only for Python 3+
 def printwait(content, timewait, filepath="./log.txt", end="", sym="."):
         """Print incremental symbol while waiting tasks + write to logfile also with incremental symbol"""
         try:
@@ -92,7 +93,14 @@ def printwait(content, timewait, filepath="./log.txt", end="", sym="."):
                 tname = threading.currentThread().getName()[:5]
                 content = u"{0}".format(content) #.encode("utf8")
                 sym = u"{0}".format(sym)
-                print("[{0}][{1}][{2}]: {3} ".format(cname, tname, datetimestr(),content), end=end, flush=True)
+                # check python version
+                if sys.version_info >= (3,0):
+                        # version 3+
+                        print("[{0}][{1}][{2}]: {3} ".format(cname, tname, datetimestr(),content), end=end, flush=True)
+                else:
+                        # version 2.7
+                        print("[{0}][{1}][{2}]: {3} ".format(cname, tname, datetimestr(),content))
+                        sys.stdout.flush()
                 with open(filepath, "a+", encoding="utf-8", newline='') as fh:
                         fh.write("[{0}][{1}][{2}]: {3} ".format(cname, tname, datetimestr(), content))
                         # first do f.flush(), and then do os.fsync(f.fileno()), 
