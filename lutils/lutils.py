@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 # -------------------------------------------------------
 # lutils library
 # Author: Tran Duc Loi (loitranduc@gmail.com)
