@@ -5,7 +5,7 @@
 # Git: https://github.com/loitd/lutils
 # Documented follow PEP257 
 # -------------------------------------------------------
-from __future__ import print_function
+from __future__ import print_function, unicode_literals, with_statement, absolute_import
 from datetime import date, timedelta, datetime
 import time, os, threading, platform, json, sys
 # from deprecated import deprecated

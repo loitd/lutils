@@ -7,21 +7,23 @@ JS: [https://github.com/loitd/lutilsjs/](https://github.com/loitd/lutilsjs/)
 ## Installation
 You can easily install this library with command `pip`  
 `pip install lutils`  
-with specific version:  
-`pip install lutils~=1.4`
-Update existing installation:
+with specific version (pip will automatically uninstall older version & install specific version):  
+`pip install lutils~=2.10.2`
+Update existing installation (manually):
 `pipenv uninstall lutils`  
 and  
 `pipenv install lutils`  
 ### Note
-Support Unicode from version 1.4. Then please update to newest version.
+- Support Unicode from version 1.4. Then please update to newest version.
+- Backward compatible with Python 2.7 (recommended for 2.x) from version 2.10.2.1. From 2.10.2.1, lutils works on both 2.x and 3.x
 ## Usage
 In your python file:  
 ~~~
-# import printlog()
+# import printlog() to both PRINT to SCREEN & WRITE to LOGFILE
 from lutils.lutils import printlog
 
-# using printx. If file not exist
+# using printlog. If file not exist, printlog will creates a new one
+# If the log file exists, printlog will appends to the end of the log file
 printlog("abc", "test.log")
 ~~~
 To connect SSH to Linux servers and get disk space status
