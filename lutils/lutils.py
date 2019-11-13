@@ -7,7 +7,7 @@
 # -------------------------------------------------------
 from __future__ import print_function, unicode_literals, with_statement, absolute_import
 from datetime import date, timedelta, datetime
-import time, os, threading, platform, json, sys
+import time, os, threading, platform, json, sys, io
 # from deprecated import deprecated
 
 
@@ -80,8 +80,14 @@ def printlog(content, filepath="./log.txt"):
         tname = threading.currentThread().getName()[:5]
         content = u"{0}".format(content) #.encode("utf8")
         print("[{0}][{1}][{2}]: {3}".format(cname, tname, datetimestr(),content))
-        with open(filepath, "a+", encoding="utf-8") as fh:
-            fh.write("[{0}][{1}][{2}]: {3}\r\n".format(cname, tname, datetimestr(), content))
+        if sys.version_info >= (3,0):
+                with open(filepath, "a+", encoding="utf-8") as fh:
+                        fh.write("[{0}][{1}][{2}]: {3}\r\n".format(cname, tname, datetimestr(), content))
+        elif sys.version_info < (3,0):
+                reload(sys)
+                sys.setdefaultencoding('utf-8')
+                with io.open(filepath, "a+", encoding="utf-8") as fh:
+                        fh.write("[{0}][{1}][{2}]: {3}\r\n".format(cname, tname, datetimestr(), content))
     except Exception as e:
         raise(e)
 
