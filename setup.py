@@ -48,16 +48,21 @@ setuptools.setup(
     },
     # include all packages under src
     packages=setuptools.find_packages(),
+    # All here: https://pypi.org/classifiers/
     classifiers=[
+        "Development Status :: 5 - Production/Stable",
         "Programming Language :: Python :: 2",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
         'Intended Audience :: Developers',
-        'Environment :: Application Environment',
+        'Environment :: Console',
         'Topic :: Software Development :: Libraries :: Python Modules',
-        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-        # "Framework :: None",
+        "Topic :: Software Development :: Debuggers",
+        "Topic :: Software Development :: Libraries",
+        "Topic :: System :: Logging",
+        "Topic :: System :: Monitoring",
+        "Natural Language :: English",
     ],
 )
