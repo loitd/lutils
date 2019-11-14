@@ -18,7 +18,8 @@ setuptools.setup(
     # install_requires=[
     #   'docutils>=0.3',
     #   'enum34;python_version<"3.4"',
-    #   'pywin32 >= 1.0;platform_system=="Windows"'
+    #   'pywin32 >= 1.0;platform_system=="Windows"',
+    #   'flask',
     # ],
     
     # If any package contains *.txt or *.rst files, include them:
@@ -34,6 +35,7 @@ setuptools.setup(
     author_email="loitranduc@gmail.com",
     description="A Public Loitd Python Utility Library",
     keywords="python python2 python3 library utilities loitd",
+    platforms='any',
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/loitd/lutils",
@@ -52,6 +54,10 @@ setuptools.setup(
         "Programming Language :: Python :: 3.7",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
-        "Framework :: None",
+        'Intended Audience :: Developers',
+        'Environment :: Application Environment',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+        # "Framework :: None",
     ],
 )
