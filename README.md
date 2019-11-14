@@ -1,21 +1,24 @@
 # lutils
-## A Loitd's Public Utilities Library Project
+## A Loitd's Public Python Utilities Library. 
 Website: [https://inneka.com](https://inneka.com)  
-Pip: [https://pypi.org/project/lutils/](https://pypi.org/project/lutils/)
-Git: [https://github.com/loitd/lutils/](https://github.com/loitd/lutils/)
-JS: [https://github.com/loitd/lutilsjs/](https://github.com/loitd/lutilsjs/)
+Pip: [https://pypi.org/project/lutils/](https://pypi.org/project/lutils/)  
+Git: [https://github.com/loitd/lutils/](https://github.com/loitd/lutils/)  
+JS: [https://github.com/loitd/lutilsjs/](https://github.com/loitd/lutilsjs/) - Not equivalent  
 ## Installation
-You can easily install this library with command `pip`  
+You can easily install this library with command `pip`:  
 `pip install lutils`  
-with specific version (pip will automatically uninstall older version & install specific version):  
-`pip install lutils~=2.10.2`
+With specific version (pip will automatically uninstall older version & install specific version):  
+`pip install lutils~=2.10.2`  
 Update existing installation (manually):
 `pipenv uninstall lutils`  
-and  
+and then:  
 `pipenv install lutils`  
-### Note
-- Support Unicode from version 1.4. Then please update to newest version.
+## Note
+- Works with Python 2.x, 3.x. Recommended Python 3.x for performance and full support features
+- Support Unicode from version 2.10.2.2. Then please update to newest version.
 - Backward compatible with Python 2.7 (recommended for 2.x) from version 2.10.2.1. From 2.10.2.1, lutils works on both 2.x and 3.x
+- Any suggestions are welcome with pull request or email at loitranduc[at]gmail.com
+- Introduction or guide (docs) if available will be at [https://inneka.com](https://inneka.com)  
 ## Usage
 In your python file:  
 ~~~
