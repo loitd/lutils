@@ -42,10 +42,28 @@ srv.getdiskspace()"""
             if debug: printlog("[getfeedback] Waiting for reply until timeout...")
             buff = ''
             while buff.find(regcode) == -1:
-                    resp = self.chan.recv(9999999).decode("utf-8")
+                    resp = self.chan.recv(9999999).decode("utf-8") #CONVERTED to Unicode String
                     buff = "{0}{1}".format(buff, resp)
                     # printlog(buff)
-            return buff
+            return buff #return UNICODE String
+        except socket.timeout:
+            printlog("[getfeedback] Time out while waiting for response from server. Program will exits.")
+            sys.exit(1)
+        except Exception as e:
+            raise(e)
+            # printlog(e)
+            # sys.exit(1)
+    
+    def getfeedbackASCII(self, regcode = ']#', debug=False):
+        """getfeedback from server command line."""
+        try:
+            if debug: printlog("[getfeedback] Waiting for reply until timeout...")
+            buff = ''
+            while buff.find(regcode) == -1:
+                    resp = self.chan.recv(9999999)
+                    buff = "{0}{1}".format(buff, resp)
+                    # printlog(buff)
+            return buff #return UNICODE String
         except socket.timeout:
             printlog("[getfeedback] Time out while waiting for response from server. Program will exits.")
             sys.exit(1)
@@ -80,16 +98,17 @@ srv.getdiskspace()"""
             printlog("Unable to accomply because channel is NULL")
             return "Unable to accomply because channel is NULL"
     
-    def getDiskSpaceHtml(self, cmd="df -h /\n"): 
+    def getDiskSpaceHtml(self, cmd="df -h /\n", isDebug=False): 
         #Remember not add r"" as we need to translate to Enter button pressed"
         if self.chan is not None:
-            self.getfeedback()
+            self.getfeedbackASCII(debug=isDebug)
             printlog("Begin get disk space with command: {0}...".format(cmd))
             self.chan.send(cmd)
-            r1 = self.getfeedback()
+            r1 = self.getfeedbackASCII(debug=isDebug)
             self.chan.send("exit\n")
-            printlog(r1)
+            if isDebug: printlog("r1: {0}".format(r1))
             ss = r1.split(r"\r\n")[1].split()
+            if isDebug: printlog("ss: {0}".format(ss))
             xs = r1.split(r"\r\n")[2].split()
             # printlog(xs)
             if len(xs) == 1:
@@ -160,9 +179,9 @@ if __name__ == "__main__":
     # Test LServer
     srv = LServer()
     srv.connect(ip="172.16.10.84", uname="root", pw="db84$$$")
-    # spaces = srv.getDiskSpaceHtml("df -h / \n")
-    # print(spaces)
-    srv.checkProcess()
+    spaces = srv.getDiskSpaceHtml("df -h / \n", True)
+    print(spaces)
+    # srv.checkProcess()
 
     # Test LWS
     # lw = LWebservice()
