@@ -23,11 +23,14 @@ and then:
 In your python file:  
 ~~~
 # import printlog() to both PRINT to SCREEN & WRITE to LOGFILE
-from lutils.lutils import printlog
+from lutils.lutils import printlog, printwait
 
 # using printlog. If file not exist, printlog will creates a new one
 # If the log file exists, printlog will appends to the end of the log file
 printlog("abc", "test.log")
+
+# using printwait. Print text to console & write to logfile & wait with dots in specific seconds
+printwait("Please wait while doing things", 5, "logfile.log")
 ~~~
 To connect SSH to Linux servers and get disk space status
 ~~~

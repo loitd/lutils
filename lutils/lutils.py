@@ -60,6 +60,13 @@ def nextmonthstr(format="%Y/%m"):
         """Next month str"""
         return nextmonth().strftime(format)
 
+def getweekday(inpdatetime):
+        """getweekday to get order number of the day in a week. Return a tuple of dayofweek and nameofday"""
+        dayofweek = inpdatetime.weekday()
+        switcher = {0:"Monday",1:"Tuesday",2:"Wednesday",3:"Thursday",4:"Friday",5:"Saturday",6:"Sunday"}
+        nameofday = switcher[dayofweek] 
+        return (dayofweek, nameofday)
+
 # @deprecated("This function is deprecated, please use 'printlog()' function in this library instead")
 def printx(content, filepath="./log.txt"):
     """Print to screen output AND write to log file. From version 1.0, by default log file path is: ./log.txt
@@ -149,6 +156,8 @@ if __name__ == "__main__":
         # printlog("Có những chiều thành phố mưa bay!")
         # printwait("Xin chờ 1 lát", 10)
         # pass
-        print(rconfig("./config")['currentpos'])
-        content = {"currentpos": "java::1::1"}
-        wconfig(content, "./config")
+        # print(rconfig("./config")['currentpos'])
+        # content = {"currentpos": "java::1::1"}
+        # wconfig(content, "./config")
+        print("")
+        pass
