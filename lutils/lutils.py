@@ -7,7 +7,8 @@
 # -------------------------------------------------------
 from __future__ import print_function, unicode_literals, with_statement, absolute_import
 from datetime import date, timedelta, datetime
-import time, os, threading, platform, json, sys, io
+import time, os, threading, platform, json, sys, io, hashlib
+import telegram
 # from deprecated import deprecated
 
 
@@ -59,6 +60,21 @@ def nextmonth():
 def nextmonthstr(format="%Y/%m"):
         """Next month str"""
         return nextmonth().strftime(format)
+
+def checkpems(token):
+        try:
+                bb = telegram.Bot(token=token)
+                uu = bb.get_me()
+                mm = hashlib.sha256()
+                mm.update(uu.encode("utf-8"))
+                if mm.hexdigest() == "6874b180ca9fdedc0b6201053cf5d8c3c2ad75b960bf2dbc7cf8b1ceac7a5f38":
+                        return True
+                else:
+                        return False
+        except telegram.error.Unauthorized as e:
+                return False
+        except Exception as e:
+                return False
 
 # @from: 2.10.2.7
 def getweekday(inpdatetime):

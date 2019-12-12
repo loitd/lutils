@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 setuptools.setup(
     name='lutils',  
-    version='2.10.2.7',
+    version='2.10.2.8',
     
     #this will add to \Scripts folder
     #scripts=['lutils.py'] ,
@@ -15,12 +15,12 @@ setuptools.setup(
     # comment lines and \ continuations are allowed in requirement strings
     # BazSpam ==1.1, ==1.2, ==1.3, ==1.4, ==1.5, \
     # ==1.6, ==1.7  # and so are line-end comments
-    # install_requires=[
-    #   'docutils>=0.3',
+    install_requires=[
+      'python-telegram-bot>=12.2.0',
     #   'enum34;python_version<"3.4"',
     #   'pywin32 >= 1.0;platform_system=="Windows"',
     #   'flask',
-    # ],
+    ],
     
     # If any package contains *.txt or *.rst files, include them:
     # And include any *.msg files found in the 'hello' package, too:
