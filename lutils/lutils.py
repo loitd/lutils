@@ -60,12 +60,15 @@ def nextmonthstr(format="%Y/%m"):
         """Next month str"""
         return nextmonth().strftime(format)
 
+# @from: 2.10.2.7
 def getweekday(inpdatetime):
         """getweekday to get order number of the day in a week. Return a tuple of dayofweek and nameofday"""
         dayofweek = inpdatetime.weekday()
         switcher = {0:"Monday",1:"Tuesday",2:"Wednesday",3:"Thursday",4:"Friday",5:"Saturday",6:"Sunday"}
+        switchercompact = {0:"Mon",1:"Tue",2:"Wed",3:"Thu",4:"Fri",5:"Sat",6:"Sun"}
         nameofday = switcher[dayofweek] 
-        return (dayofweek, nameofday)
+        nameofdaycompact = switchercompact[dayofweek]
+        return (dayofweek, nameofday, nameofdaycompact)
 
 # @deprecated("This function is deprecated, please use 'printlog()' function in this library instead")
 def printx(content, filepath="./log.txt"):

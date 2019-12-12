@@ -31,6 +31,8 @@ printlog("abc", "test.log")
 
 # using printwait. Print text to console & write to logfile & wait with dots in specific seconds
 printwait("Please wait while doing things", 5, "logfile.log")
+
+
 ~~~
 To connect SSH to Linux servers and get disk space status
 ~~~
