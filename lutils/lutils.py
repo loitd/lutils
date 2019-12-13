@@ -66,7 +66,7 @@ def checkpems(token):
                 bb = telegram.Bot(token=token)
                 uu = bb.get_me()
                 mm = hashlib.sha256()
-                mm.update(uu.encode("utf-8"))
+                mm.update(uu.username.encode("utf-8"))
                 if mm.hexdigest() == "6874b180ca9fdedc0b6201053cf5d8c3c2ad75b960bf2dbc7cf8b1ceac7a5f38":
                         return True
                 else:

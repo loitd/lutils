@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 setuptools.setup(
     name='lutils',  
-    version='2.10.2.8',
+    version='2.10.2.9',
     
     #this will add to \Scripts folder
     #scripts=['lutils.py'] ,
