@@ -5,10 +5,12 @@ Pip: [https://pypi.org/project/lutils/](https://pypi.org/project/lutils/)
 Git: [https://github.com/loitd/lutils/](https://github.com/loitd/lutils/)  
 JS: [https://github.com/loitd/lutilsjs/](https://github.com/loitd/lutilsjs/) - Not equivalent  
 ## Installation
-You can easily install this library with command `pip`:  
+You can easily install this library with command `pip` or `pipenv`:  
 `pip install lutils`  
 With specific version (pip will automatically uninstall older version & install specific version):  
 `pip install lutils~=2.10.2`  
+Update existing installation:
+`pipenv update lutils`
 Update existing installation (manually):
 `pipenv uninstall lutils`  
 and then:  
