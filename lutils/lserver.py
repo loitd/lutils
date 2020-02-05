@@ -35,6 +35,23 @@ srv.getdiskspace()"""
             self.chan = None
             printlog(e)
             return False
+    
+    def connectWithKey(self, ip, uname, privatekeypath, debug=False):
+        try:
+            # create RSAKey from private key file mykey.pem
+            mykey = paramiko.RSAKey.from_private_key_file(privatekeypath)
+            # Connect with pkey
+            self.client.connect(hostname=ip, username=uname, pkey=mykey)
+            self.chan = self.client.invoke_shell()
+            if debug == True: printlog("Successfull connected to %s"%ip)
+            self.chan.settimeout(5.0)
+            self.error = 'No error founds while connecting'
+            return True
+        except Exception as e:
+            self.error = e
+            self.chan = None
+            printlog(e)
+            return False
 
     def getfeedback(self, regcode = ']#', debug=False):
         """getfeedback from server command line."""
