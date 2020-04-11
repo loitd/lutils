@@ -36,6 +36,8 @@ srv.getdiskspace()"""
             printlog(e)
             return False
     
+    # https://www.linode.com/docs/security/authentication/use-public-key-authentication-with-ssh/
+    # https://gist.github.com/batok/2352501 -> note on create key pairs properly
     def connectWithKey(self, ip, uname, privatekeypath, debug=False):
         try:
             # create RSAKey from private key file mykey.pem
