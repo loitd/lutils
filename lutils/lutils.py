@@ -124,7 +124,7 @@ def printlog(content, filepath="./log.txt"):
         raise(e)
 
 # from ver 2.8 added threadname
-# Added ack signal to mark from 2.10.3.2
+# Added ack signal to mark from 2.10.3.3
 def printwait(content, timewait, filepath="./log.txt", end="", sym=".", ack=True):
         """Print incremental symbol while waiting tasks + write to logfile also with incremental symbol"""
         try:
@@ -143,8 +143,8 @@ def printwait(content, timewait, filepath="./log.txt", end="", sym=".", ack=True
                         for i in range(timewait):
                                 time.sleep(1)
                                 if (timewait - i)%60 == 0:
-                                        print((timewait-i), end=end, flush=True)
-                                        fh.write((timewait-i))
+                                        print("({0})".format(timewait-i), end=end, flush=True)
+                                        fh.write("({0})".format(timewait-i))
                                 else:
                                         print(sym, end=end, flush=True)
                                         fh.write(sym)
