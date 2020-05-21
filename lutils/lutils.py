@@ -4,6 +4,7 @@
 # Author: Tran Duc Loi (loitranduc@gmail.com)
 # Git: https://github.com/loitd/lutils
 # Documented follow PEP257 
+# Due to telegram package => not support version 2.7 Python
 # -------------------------------------------------------
 from __future__ import print_function, unicode_literals, with_statement, absolute_import
 from datetime import date, timedelta, datetime
@@ -104,21 +105,22 @@ def printx(content, filepath="./log.txt"):
         raise(e)
 
 # from ver 2.8 added threadname
-def printlog(content, filepath="./log.txt"):
+def printlog(content, filepath="./log.txt", wrmode="a+", encode="utf-8"):
     """Print to screen output AND write to log file. Added from version 1.0.
     By default log file path is: ./log.txt"""
     try:
+        # Writing mode
         cname = platform.node()[:10]
         tname = threading.currentThread().getName()[:5]
         content = u"{0}".format(content) #.encode("utf8")
         print("[{0}][{1}][{2}]: {3}".format(cname, tname, datetimestr(),content))
         if sys.version_info >= (3,0):
-                with open(filepath, "a+", encoding="utf-8") as fh:
+                with open(filepath, wrmode, encoding=encode) as fh:
                         fh.write("[{0}][{1}][{2}]: {3}\r\n".format(cname, tname, datetimestr(), content))
         elif sys.version_info < (3,0):
                 reload(sys)
                 sys.setdefaultencoding('utf-8')
-                with io.open(filepath, "a+", encoding="utf-8") as fh:
+                with io.open(filepath, wrmode, encoding=encode) as fh:
                         fh.write("[{0}][{1}][{2}]: {3}\r\n".format(cname, tname, datetimestr(), content))
     except Exception as e:
         raise(e)

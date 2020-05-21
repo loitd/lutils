@@ -8,7 +8,7 @@ JS: [https://github.com/loitd/lutilsjs/](https://github.com/loitd/lutilsjs/) - N
 You can easily install this library with command `pip` or `pipenv`:  
 `pip install lutils`  
 With specific version (pip will automatically uninstall older version & install specific version):  
-`pip install lutils~=2.10.2`  
+`pip install lutils~=2.10.3.3`  
 Update existing installation:
 `pipenv update lutils`
 Update existing installation (manually):
