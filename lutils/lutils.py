@@ -105,6 +105,7 @@ def printx(content, filepath="./log.txt"):
         raise(e)
 
 # from ver 2.8 added threadname
+# from ver 2.11.1 added wrmode, encode, onlycontent
 def printlog(content, filepath="./log.txt", wrmode="a+", encode="utf-8", onlycontent=False):
     """Print to screen output AND write to log file. Added from version 1.0.
     By default log file path is: ./log.txt"""
@@ -139,8 +140,11 @@ def printlog(content, filepath="./log.txt", wrmode="a+", encode="utf-8", onlycon
 
 # from ver 2.8 added threadname
 # Added ack signal to mark from 2.10.3.3
-def printwait(content, timewait, filepath="./log.txt", end="", sym=".", ack=True):
-        """Print incremental symbol while waiting tasks + write to logfile also with incremental symbol"""
+# Added ackstep, stepinsec
+def printwait(content, timewait, filepath="./log.txt", end="", sym=".", ack=True, ackstep=60, stepinsec=1, encode="utf-8"):
+        """Print incremental symbol while waiting tasks + write to logfile also with incremental symbol
+        printwait("Hello", 10, sym="+", ackstep=3, stepinsec=1) 
+        => [DESKTOP-KG][MainT][2020/05/22 16:20:10]: Hello +(9)++(6)++(3)++"""
         try:
                 cname = platform.node()[:10]
                 tname = threading.currentThread().getName()[:5]
@@ -148,15 +152,15 @@ def printwait(content, timewait, filepath="./log.txt", end="", sym=".", ack=True
                 sym = u"{0}".format(sym)
                 # version 3+ and 2.x are different
                 print("[{0}][{1}][{2}]: {3} ".format(cname, tname, datetimestr(),content), end=end, flush=True)
-                with open(filepath, "a+", encoding="utf-8", newline='') as fh:
+                with open(filepath, "a+", encoding=encode, newline='') as fh:
                         fh.write("[{0}][{1}][{2}]: {3} ".format(cname, tname, datetimestr(), content))
                         # first do f.flush(), and then do os.fsync(f.fileno()), 
                         # to ensure that all internal buffers associated with f are written to disk.
                         fh.flush()
                         os.fsync(fh.fileno())
-                        for i in range(timewait):
-                                time.sleep(1)
-                                if (timewait - i)%60 == 0:
+                        for i in range(0,timewait,stepinsec):
+                                time.sleep(stepinsec)
+                                if (timewait - i)%ackstep == 0 and ack:
                                         print("({0})".format(timewait-i), end=end, flush=True)
                                         fh.write("({0})".format(timewait-i))
                                 else:
@@ -203,5 +207,7 @@ if __name__ == "__main__":
         # print(rconfig("./config")['currentpos'])
         # content = {"currentpos": "java::1::1"}
         # wconfig(content, "./config")
-        print(checkpems("abc", True))
+        # print(checkpems("abc", True))
+        # printwait("Hello", 10, sym="+", ackstep=3, stepinsec=1) #result: [DESKTOP-KG][MainT][2020/05/22 16:20:10]: Hello +(9)++(6)++(3)++
+        printwait("Hello", 10, sym="+", ackstep=3, stepinsec=2) #result: [DESKTOP-KG][MainT][2020/05/22 16:20:57]: Hello ++(6)++
         pass

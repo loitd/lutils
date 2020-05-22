@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 setuptools.setup(
     name='lutils',  
-    version='2.11.1',
+    version='2.11.2',
     
     #this will add to \Scripts folder
     #scripts=['lutils.py'] ,
@@ -34,7 +34,7 @@ setuptools.setup(
     author="Tran Duc Loi",
     author_email="loitranduc@gmail.com",
     description="A Public Loitd Python Utility Library",
-    keywords="python python2 python3 library utilities loitd",
+    keywords="python python2 python3 library utilities loitd printlog printwait telegram",
     platforms='any',
     long_description=long_description,
     long_description_content_type="text/markdown",
