@@ -105,7 +105,7 @@ def printx(content, filepath="./log.txt"):
         raise(e)
 
 # from ver 2.8 added threadname
-def printlog(content, filepath="./log.txt", wrmode="a+", encode="utf-8"):
+def printlog(content, filepath="./log.txt", wrmode="a+", encode="utf-8", onlycontent=False):
     """Print to screen output AND write to log file. Added from version 1.0.
     By default log file path is: ./log.txt"""
     try:
@@ -113,15 +113,27 @@ def printlog(content, filepath="./log.txt", wrmode="a+", encode="utf-8"):
         cname = platform.node()[:10]
         tname = threading.currentThread().getName()[:5]
         content = u"{0}".format(content) #.encode("utf8")
-        print("[{0}][{1}][{2}]: {3}".format(cname, tname, datetimestr(),content))
+        # Print on screen
+        if onlycontent:
+                print("{0}".format(content))
+        else:
+                print("[{0}][{1}][{2}]: {3}".format(cname, tname, datetimestr(),content))
+        # Write to logs
         if sys.version_info >= (3,0):
                 with open(filepath, wrmode, encoding=encode) as fh:
-                        fh.write("[{0}][{1}][{2}]: {3}\r\n".format(cname, tname, datetimestr(), content))
+                        if onlycontent:
+                                fh.write("{0}\r\n".format(content))
+                        else:
+                                fh.write("[{0}][{1}][{2}]: {3}\r\n".format(cname, tname, datetimestr(), content))
         elif sys.version_info < (3,0):
                 reload(sys)
                 sys.setdefaultencoding('utf-8')
                 with io.open(filepath, wrmode, encoding=encode) as fh:
-                        fh.write("[{0}][{1}][{2}]: {3}\r\n".format(cname, tname, datetimestr(), content))
+                        if onlycontent:
+                                fh.write("{0}\r\n".format(content))
+                        else:
+                                fh.write("[{0}][{1}][{2}]: {3}\r\n".format(cname, tname, datetimestr(), content))
+        # all done
     except Exception as e:
         raise(e)
 
