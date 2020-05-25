@@ -106,8 +106,9 @@ def printx(content, filepath="./log.txt"):
 
 # from ver 2.8 added threadname
 # from ver 2.11.1 added wrmode, encode, onlycontent
-# 2.11.3 added end param
-def printlog(content, filepath="./log.txt", wrmode="a+", encode="utf-8", onlycontent=False, end="\r\n"):
+# 2.11.3 added wend param
+# 2.11.4 added wbegin param
+def printlog(content, filepath="./log.txt", wrmode="a+", encode="utf-8", onlycontent=False, wbegin="", wend="\r\n"):
     """Print to screen output AND write to log file. Added from version 1.0.
     By default log file path is: ./log.txt"""
     try:
@@ -124,17 +125,20 @@ def printlog(content, filepath="./log.txt", wrmode="a+", encode="utf-8", onlycon
         if sys.version_info >= (3,0):
                 with open(filepath, wrmode, encoding=encode) as fh:
                         if onlycontent:
-                                fh.write("{0}{1}".format(content, end))
+                                fh.write("{0}{1}{2}".format(wbegin, content, wend))
                         else:
-                                fh.write("[{0}][{1}][{2}]: {3}{4}".format(cname, tname, datetimestr(), content, end))
+                                fh.write("{5}[{0}][{1}][{2}]: {3}{4}".format(cname, tname, datetimestr(), content, wend, wbegin))
+                        # flush
+                        fh.flush()
+                        os.fsync(fh.fileno())
         elif sys.version_info < (3,0):
                 reload(sys)
                 sys.setdefaultencoding('utf-8')
                 with io.open(filepath, wrmode, encoding=encode) as fh:
                         if onlycontent:
-                                fh.write("{0}{1}".format(content, end))
+                                fh.write("{0}{1}{2}".format(wbegin, content, wend))
                         else:
-                                fh.write("[{0}][{1}][{2}]: {3}{4}".format(cname, tname, datetimestr(), content, end))
+                                fh.write("{5}[{0}][{1}][{2}]: {3}{4}".format(cname, tname, datetimestr(), content, wend, wbegin))
         # all done
     except Exception as e:
         raise(e)
