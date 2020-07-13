@@ -9,6 +9,8 @@ You can easily install this library with command `pip` or `pipenv`:
 `pip install lutils`  
 With specific version (pip will automatically uninstall older version & install specific version):  
 `pip install lutils~=2.11.7`  
+Install with pipenv:  
+`pipenv install lutils~=2.11.7.1`  
 Update existing installation:
 `pipenv update lutils`
 Update existing installation (manually):
