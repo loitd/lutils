@@ -4,12 +4,12 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pytest = "*"
+deprecated = "*"
 
 [packages]
 paramiko = "*"
-deprecated = "*"
-requests = "*"
-lutils = "*"
+
 
 [requires]
 python_version = "3"

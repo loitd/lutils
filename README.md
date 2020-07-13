@@ -16,7 +16,7 @@ Update existing installation (manually):
 and then:  
 `pipenv install lutils`  
 ## Note
-- Works with Python 2.x, 3.x. Recommended Python 3.x for performance and full support features
+- Works with Python 3.x. Recommended Python 3.x for performance and full support features
 - Support Unicode from version 2.10.2.2. Then please update to newest version.
 - Backward compatible with Python 2.7 (recommended for 2.x) from version 2.10.2.1. From 2.10.2.1, lutils works on both 2.x and 3.x
 - Any suggestions are welcome with pull request or email at loitranduc[at]gmail.com
