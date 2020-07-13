@@ -51,3 +51,8 @@
 #     then q = Partition(A, p, r)
 #       run Quicksort(A, p, q-1)
 #       run Quicksort(A, q+1, r)
+
+from bubblesort import bubbleSort
+from mergesort import mergeSort
+from quicksort import quickSort
+from selectionsort import selectionSort
