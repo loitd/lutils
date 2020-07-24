@@ -1,2 +1,2 @@
-from lutils import *
-from lserver import LServer
+from lutils.utils.lutils import *
+from lutils.utils.lserver import LServer

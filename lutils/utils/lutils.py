@@ -85,12 +85,25 @@ def checkpems(token, isDebug=False):
 
 # @from: 2.10.2.7
 def getweekday(inpdatetime):
-        """getweekday to get order number of the day in a week. Return a tuple of dayofweek and nameofday"""
+        """getweekday to get order number of the day in a week. 
+        
+        Input: datetime type
+        Return a tuple of dayofweek, nameofday and nameofdaycompact
+        
+        To convert string to datetime: 
+                date_time_str = '18/09/19 01:55:19'
+                date_time_obj = datetime. strptime(date_time_str, '%d/%m/%y %H:%M:%S')
+                date_time_str = '20/09/2020 01:55:19'
+                date_time_obj = datetime. strptime(date_time_str, '%d/%m/%Y %H:%M:%S')
+​        """
         dayofweek = inpdatetime.weekday()
         switcher = {0:"Monday",1:"Tuesday",2:"Wednesday",3:"Thursday",4:"Friday",5:"Saturday",6:"Sunday"}
         switchercompact = {0:"Mon",1:"Tue",2:"Wed",3:"Thu",4:"Fri",5:"Sat",6:"Sun"}
+        # produce full nameofday
         nameofday = switcher[dayofweek] 
+        # produce nameofday compact
         nameofdaycompact = switchercompact[dayofweek]
+        # return to the caller
         return (dayofweek, nameofday, nameofdaycompact)
 
 # @deprecated("This function is deprecated, please use 'printlog()' function in this library instead")

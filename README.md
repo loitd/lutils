@@ -27,7 +27,7 @@ and then:
 In your python file:  
 ~~~
 # import printlog() to both PRINT to SCREEN & WRITE to LOGFILE
-from lutils.lutils import printlog, printwait
+from lutils.utils import printlog, printwait
 
 # using printlog. If file not exist, printlog will creates a new one
 # If the log file exists, printlog will appends to the end of the log file
@@ -41,7 +41,7 @@ printwait("Please wait while doing things", 5, "logfile.log")
 To connect SSH to Linux servers and get disk space status
 ~~~
 # import LServer
-from lutils.lutils import LServer
+from lutils.utils import LServer
 
 # init instance
 srv = LServer()

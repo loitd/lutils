@@ -6,10 +6,12 @@ verify_ssl = true
 [dev-packages]
 pytest = "*"
 deprecated = "*"
+pytest-cov = "*"
+pytest-xdist = "*"
 
 [packages]
 paramiko = "*"
-
+python-telegram-bot = "*"
 
 [requires]
 python_version = "3"
