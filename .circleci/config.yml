@@ -12,9 +12,8 @@ jobs:
       - python/install-deps
       - python/save-cache
       - run:
-          command: |
-            pipenv run python -m pytest --cov=lutils --cov-report=xml
-            pipenv run python -m codecov --token=1aa8175d-dd1b-4608-9a44-867903349afe
+          command: pipenv run python -m pytest --cov=lutils --cov-report=xml
+          name: Test
 
 workflows:
   main:
