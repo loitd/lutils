@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
@@ -70,3 +70,21 @@ jobs:
       #         heroku run python manage.py deploy
       #         heroku restart
       #       fi
+
+# Orchestrate our job run sequence. Approval Job
+# The build job runs, then the test job, then a hold job, with type: approval ensures the workflow waits for manual approval before the deploy job can run.
+workflows:
+  build_and_test:
+    jobs:
+      - build
+      # - test:
+      #     requires:
+      #       - build
+      # - hold:
+      #     type: approval
+      #     requires:
+      #       - build
+      #       - test
+      # - deploy:
+      #     requires:
+      #       - hold
