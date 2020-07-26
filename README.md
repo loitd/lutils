@@ -1,4 +1,5 @@
 # lutils
+[![codecov](https://codecov.io/gh/loitd/lutils/branch/master/graph/badge.svg)](https://codecov.io/gh/loitd/lutils)
 ## A Loitd's Public Python Utilities Library. 
 Website: [https://inneka.com](https://github.com/loitd/lutils/)  
 Pip: [https://pypi.org/project/lutils/](https://pypi.org/project/lutils/)  
