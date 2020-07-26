@@ -33,9 +33,6 @@ jobs:
               cat Pipfile
               pipenv install
               pipenv check
-              pipenv shell
-              python
-              import pytest
       # - run:
       #     command: |
       #       python3 -m venv venv
