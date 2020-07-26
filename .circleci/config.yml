@@ -4,15 +4,12 @@ orbs:
   python: circleci/python@0.2.1
 
 jobs:
-  tests:
+  build-and-test:
     executor: python/default
     steps:
       - checkout
       - python/load-cache
-      - run:
-          command:|
-            sudo pip install pipenv
-            pipenv install
+      - python/install-deps
       - python/save-cache
       - run:
           command: |
@@ -22,4 +19,4 @@ jobs:
 workflows:
   main:
     jobs:
-      - tests
+      - build-and-test
