@@ -1,7 +1,8 @@
 # lutils
 [![codecov](https://codecov.io/gh/loitd/lutils/branch/master/graph/badge.svg)](https://codecov.io/gh/loitd/lutils)
+[![lutils](https://circleci.com/gh/loitd/lutils.svg?style=svg)](https://circleci.com/gh/loitd/lutils)
 ## A Loitd's Public Python Utilities Library. 
-Website: [https://inneka.com](https://github.com/loitd/lutils/)  
+Website: [https://loitd.github.io/lutils](https://loitd.github.io/lutils/)  
 Pip: [https://pypi.org/project/lutils/](https://pypi.org/project/lutils/)  
 Git: [https://github.com/loitd/lutils/](https://github.com/loitd/lutils/)  
 JS: [https://github.com/loitd/lutilsjs/](https://github.com/loitd/lutilsjs/) - Not equivalent  
@@ -9,9 +10,9 @@ JS: [https://github.com/loitd/lutilsjs/](https://github.com/loitd/lutilsjs/) - N
 You can easily install this library with command `pip` or `pipenv`:  
 `pip install lutils`  
 With specific version (pip will automatically uninstall older version & install specific version):  
-`pip install lutils~=2.11.7`  
+`pip install lutils~=2.11.73`  
 Install with pipenv:  
-`pipenv install lutils~=2.11.7.1`  
+`pipenv install lutils~=2.11.73`  
 Update existing installation:
 `pipenv update lutils`
 Update existing installation (manually):
@@ -27,32 +28,19 @@ and then:
 ## Usage
 In your python file:  
 ~~~
-# import printlog() to both PRINT to SCREEN & WRITE to LOGFILE
 from lutils.utils import printlog, printwait
-
-# using printlog. If file not exist, printlog will creates a new one
-# If the log file exists, printlog will appends to the end of the log file
 printlog("abc", "test.log")
-
-# using printwait. Print text to console & write to logfile & wait with dots in specific seconds
 printwait("Please wait while doing things", 5, "logfile.log")
-
-
 ~~~
+
 To connect SSH to Linux servers and get disk space status
 ~~~
-# import LServer
 from lutils.utils import LServer
-
-# init instance
 srv = LServer()
-
-# connect to server
 srv.connect(ip="192.168.1.2", uname="root", pwd="123456")
-
-# get disk space
 srv.getdiskspace()
 ~~~
+
 ## For developers
 To build this package:  
 * `pip install --upgrade pip setuptools wheel`
@@ -68,4 +56,7 @@ or
 * `python -m twine upload --skip-existing -u loitd --repository-url https://upload.pypi.org/legacy/ dist/*`  
 
 Easy upload with keyring:  
-`python -m keyring set https://upload.pypi.org/legacy/ loitd`
+* `python -m keyring set https://upload.pypi.org/legacy/ loitd`
+
+CI/CD Automated with Pytest and Circle CI
+* `https://app.circleci.com/pipelines/github/loitd/lutils`

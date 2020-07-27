@@ -12,33 +12,40 @@ import time, os, threading, platform, json, sys, io, hashlib
 import telegram
 # from deprecated import deprecated
 
-
-def datetimestr(format="%Y/%m/%d %H:%M:%S"):
-    """Return current datetime in specific format."""
-    return(datetime.now().strftime(format))
-
-#yesterday
-def yesterday():
-    """Print yesterday date in datetime value"""
-    return (date.today() - timedelta(days=1))
+def datetimestr(format="%Y/%m/%d %H:%M:%S", thedate=datetime.now()):
+    """
+    Return current datetime in specific format.
+    By default, use current datetime
+    """
+    return(thedate.strftime(format))
 
 #yesterday
-def backto(dayback=1):
+def yesterday(thedate=date.today()):
+    """
+    Print yesterday date in datetime value.
+    By default, use today
+    """
+    return (thedate - timedelta(days=1))
+
+#yesterday
+def backto(dayback=1, thedate=date.today()):
     """Print backto date in datetime value"""
-    return (date.today() - timedelta(days=dayback))
+    return (thedate - timedelta(days=dayback))
 
-def yesterdaystr(format="%Y/%m/%d"):
-    """Print yesterday datetime in string format."""
-    return(yesterday().strftime(format))
+def yesterdaystr(format="%Y/%m/%d", thedate=yesterday()):
+    """
+    Print yesterday datetime in string format.
+    Default output format is NOT with time.
+    """
+    return(thedate.strftime(format))
 
-def backtostr(dayback=1, format="%Y/%m/%d"):
+def backtostr(dayback=1, format="%Y/%m/%d", thedate=date.today()):
     """Print backto datetime in string format."""
-    return(backto(dayback).strftime(format))
+    return(backto(dayback=dayback, thedate=thedate).strftime(format))
 
-def firstdayofthismonth():
+def firstdayofthismonth(thedate=datetime.today()):
         """Return first day of this month"""
-        today=datetime.today()
-        firstday = today.replace(day=1)
+        firstday = thedate.replace(day=1)
         return firstday
 
 def thismonthstr(format="%Y/%m"):
@@ -92,9 +99,9 @@ def getweekday(inpdatetime):
         
         To convert string to datetime: 
                 date_time_str = '18/09/19 01:55:19'
-                date_time_obj = datetime. strptime(date_time_str, '%d/%m/%y %H:%M:%S')
+                date_time_obj = datetime.strptime(date_time_str, '%d/%m/%y %H:%M:%S')
                 date_time_str = '20/09/2020 01:55:19'
-                date_time_obj = datetime. strptime(date_time_str, '%d/%m/%Y %H:%M:%S')
+                date_time_obj = datetime.strptime(date_time_str, '%d/%m/%Y %H:%M:%S')
 ​        """
         dayofweek = inpdatetime.weekday()
         switcher = {0:"Monday",1:"Tuesday",2:"Wednesday",3:"Thursday",4:"Friday",5:"Saturday",6:"Sunday"}

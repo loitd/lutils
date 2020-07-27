@@ -48,7 +48,7 @@ jobs:
           key: deps2-{{ .Branch }}-{{ checksum "Pipfile" }}
           paths:
             # - 'venv'
-            - '.venv'
+            - '.env'
       - run:
             name: Unit tests #remember to ACTIVATE venv in EACH STEP
             command: |
