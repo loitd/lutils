@@ -32,13 +32,9 @@ jobs:
       - run:
             name: Install Dependencies
             command: |
-              export PIPENV_VENV_IN_PROJECT="enabled"
-              cat Pipfile
-              pipenv install
-              pipenv check
-              echo $PIPENV_VENV_IN_PROJECT
-              ls -al
-              pipenv shell
+              python3 -m venv .env
+              source .env/bin/activate
+              pip install -r ./requirements.txt
       # - run:
       #     command: |
       #       python3 -m venv venv
@@ -54,7 +50,7 @@ jobs:
             # - 'venv'
             - '.venv'
       - run:
-            name: Unit tests & upload to codecov
+            name: Unit tests
             command: |
               python -m pytest --cov=lutils --cov-report=xml
               python -m codecov --token=1aa8175d-dd1b-4608-9a44-867903349afe
