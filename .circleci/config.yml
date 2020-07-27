@@ -50,8 +50,9 @@ jobs:
             # - 'venv'
             - '.venv'
       - run:
-            name: Unit tests
+            name: Unit tests #remember to ACTIVATE venv in EACH STEP
             command: |
+              source .env/bin/activate
               python -m pytest --cov=lutils --cov-report=xml
               python -m codecov --token=1aa8175d-dd1b-4608-9a44-867903349afe
       # - run:
