@@ -25,4 +25,4 @@ REM python -m codecov --token=1aa8175d-dd1b-4608-9a44-867903349afe
 
 REM &: just do command next to others
 REM &&: do command if only previous one has been successful
-.env\Scripts\activate && python -m pytest --cov=lutils --cov-report=xml && python -m codecov --token=1aa8175d-dd1b-4608-9a44-867903349afe
+.env\Scripts\activate && python -m pytest --cov=lutils --cov-report=xml --cov-report=html:test-reports && python -m codecov --token=1aa8175d-dd1b-4608-9a44-867903349afe

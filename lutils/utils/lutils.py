@@ -48,26 +48,26 @@ def firstdayofthismonth(thedate=datetime.today()):
         firstday = thedate.replace(day=1)
         return firstday
 
-def thismonthstr(format="%Y/%m"):
+def thismonthstr(format="%Y/%m", thedate=datetime.today()):
         """this month to print"""
-        return firstdayofthismonth().strftime(format)
+        return firstdayofthismonth(thedate=thedate).strftime(format)
 
-def previousmonth():
+def previousmonth(thedate=datetime.today()):
         """Last month print"""
-        prevmonth = firstdayofthismonth() - timedelta(days=1)
+        prevmonth = firstdayofthismonth(thedate=thedate) - timedelta(days=1)
         return prevmonth
 
-def previousmonthstr(format="%Y/%m"):
+def previousmonthstr(format="%Y/%m", thedate=datetime.today()):
         """Previous month to print"""
-        return previousmonth().strftime(format)
+        return previousmonth(thedate=thedate).strftime(format)
 
-def nextmonth():
+def nextmonth(thedate=datetime.today()):
         """Next month"""
-        return firstdayofthismonth() + timedelta(days=31)
+        return firstdayofthismonth(thedate=thedate) + timedelta(days=31)
 
-def nextmonthstr(format="%Y/%m"):
+def nextmonthstr(format="%Y/%m", thedate=datetime.today()):
         """Next month str"""
-        return nextmonth().strftime(format)
+        return nextmonth(thedate=thedate).strftime(format)
 
 # https://python-telegram-bot.readthedocs.io/en/stable/telegram.user.html#telegram.User
 def checkpems(token, isDebug=False):
@@ -201,29 +201,29 @@ def printwait(content, timewait, filepath="./log.txt", end="", sym=".", ack=True
         except Exception as e:
                 raise(e)
 
-def rconfig(filepath):
-        """Read config file
-        Available since > 2.9.3"""
-        try:
-                with open(filepath, "r+", encoding="utf-8") as fh:
-                        rstl = fh.read()
-                        rstl = json.loads(rstl)
-                        return rstl
-        except Exception as e:
-                raise(e)
-        return False
+# def rconfig(filepath):
+#         """Read config file
+#         Available since > 2.9.3"""
+#         try:
+#                 with open(filepath, "r+", encoding="utf-8") as fh:
+#                         rstl = fh.read()
+#                         rstl = json.loads(rstl)
+#                         return rstl
+#         except Exception as e:
+#                 raise(e)
+#         return False
 
-def wconfig(content, filepath):
-        """Write config file
-        Available since > 2.9.3"""
-        try:
-                with open(filepath, "w+", encoding="utf-8") as fh:
-                        content = json.dumps(content)
-                        fh.write(content)
-                return True
-        except Exception as e:
-                raise(e)
-        return False
+# def wconfig(content, filepath):
+#         """Write config file
+#         Available since > 2.9.3"""
+#         try:
+#                 with open(filepath, "w+", encoding="utf-8") as fh:
+#                         content = json.dumps(content)
+#                         fh.write(content)
+#                 return True
+#         except Exception as e:
+#                 raise(e)
+#         return False
 
     
 if __name__ == "__main__":

@@ -6,8 +6,6 @@ jobs:
     docker:
       - image: circleci/python:3.7.8-stretch-node #use python 3.7
         environment:
-          FLASK_CONFIG: testing
-          TEST_DATABASE_URL: postgresql://ubuntu@localhost/circle_test?sslmode=disable
           PIPENV_VENV_IN_PROJECT: enabled
       # - image: circleci/postgres:9.6.5-alpine-ram
       #   environment:
@@ -16,7 +14,7 @@ jobs:
       #     POSTGRES_PASSWORD: ''
     steps:
       - checkout
-      # - run: mkdir test-reports
+      - run: mkdir test-reports
       # - run:
       #     name: Download Selenium
       #     command: |
@@ -53,7 +51,7 @@ jobs:
             name: Unit tests #remember to ACTIVATE venv in EACH STEP
             command: |
               source .env/bin/activate
-              python -m pytest --cov=lutils --cov-report=xml
+              python -m pytest --cov=lutils --cov-report=xml --cov-report=html:test-reports
               python -m codecov --token=1aa8175d-dd1b-4608-9a44-867903349afe
       # - run:
       #     command: |
@@ -62,8 +60,8 @@ jobs:
       # - store_artifacts:
       #     path: test-reports/
       #     destination: tr1
-      # - store_test_results:
-      #     path: test-reports/
+      - store_test_results:
+          path: test-reports/
       # - add_ssh_keys:
       #     fingerprints:
       #       - '48:a0:87:54:ca:75:32:12:c6:9e:a2:77:a4:7a:08:a4'

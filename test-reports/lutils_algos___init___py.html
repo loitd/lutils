@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
+    <title>Coverage for lutils\algos\__init__.py: 100%</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="jquery.isonscreen.js"></script>
+    <script type="text/javascript" src="coverage_html.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(coverage.pyfile_ready);
+    </script>
+</head>
+<body class="pyfile">
+<div id="header">
+    <div class="content">
+        <h1>Coverage for <b>lutils\algos\__init__.py</b> :
+            <span class="pc_cov">100%</span>
+        </h1>
+        <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
+        <h2 class="stats">
+            0 statements &nbsp;
+            <button type="button" class="run shortkey_r button_toggle_run" title="Toggle lines run">0 run</button>
+            <button type="button" class="mis show_mis shortkey_m button_toggle_mis" title="Toggle lines missing">0 missing</button>
+            <button type="button" class="exc show_exc shortkey_x button_toggle_exc" title="Toggle lines excluded">0 excluded</button>
+        </h2>
+    </div>
+</div>
+<div class="help_panel">
+    <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
+    <p class="legend">Hot-keys on this page</p>
+    <div>
+    <p class="keyhelp">
+        <span class="key">r</span>
+        <span class="key">m</span>
+        <span class="key">x</span>
+        <span class="key">p</span> &nbsp; toggle line displays
+    </p>
+    <p class="keyhelp">
+        <span class="key">j</span>
+        <span class="key">k</span> &nbsp; next/prev highlighted chunk
+    </p>
+    <p class="keyhelp">
+        <span class="key">0</span> &nbsp; (zero) top of page
+    </p>
+    <p class="keyhelp">
+        <span class="key">1</span> &nbsp; (one) first highlighted chunk
+    </p>
+    </div>
+</div>
+<div id="source">
+    <p id="t1" class="pln"><span class="n"><a href="#t1">1</a></span><span class="t"><span class="com"># REF:</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t2" class="pln"><span class="n"><a href="#t2">2</a></span><span class="t"><span class="com"># https://viblo.asia/p/tong-hop-thuat-toan-sort-co-ban-vi-du-trong-ngon-ngu-c-Qbq5QqpE5D8</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t3" class="pln"><span class="n"><a href="#t3">3</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t4" class="pln"><span class="n"><a href="#t4">4</a></span><span class="t"><span class="com"># T&#7889;c &#273;&#7897;</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t5" class="pln"><span class="n"><a href="#t5">5</a></span><span class="t"><span class="com"># V&#7873; t&#7889;c &#273;&#7897; th&#236; c&#361;ng ph&#7909; thu&#7897;c nhi&#7873;u v&#224;o Machine spec. &#12288;</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t6" class="pln"><span class="n"><a href="#t6">6</a></span><span class="t"><span class="com"># V&#237; d&#7909;, CountingSort th&#236; nhanh nh&#7845;t 1 c&#225;ch &#225;p &#273;&#7843;o nh&#432;ng l&#7841;i c&#7847;n c&#243; 1 l&#432;&#7907;ng memory kh&#244;ng ph&#7843;i "d&#7841;ng t&#7847;m th&#432;&#7901;ng" t&#249;y v&#224;o ph&#7841;m vi gi&#225; tr&#7883;. </span>&nbsp;</span><span class="r"></span></p>
+    <p id="t7" class="pln"><span class="n"><a href="#t7">7</a></span><span class="t"><span class="com"># Ngo&#224;i ra, &#273;&#7889;i v&#7899;i Merge sort v&#224; Quick sort Th&#236; merge sort nhanh v&#7899;i data nh&#7887; Quick sort &#273;&#432;&#7907;c &#273;&#225;nh gi&#225; nhanh nh&#7845;t v&#7899;i data l&#7899;n.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t8" class="pln"><span class="n"><a href="#t8">8</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t9" class="pln"><span class="n"><a href="#t9">9</a></span><span class="t"><span class="com"># L&#432;&#7907;ng Memory c&#7847;n thi&#7871;t</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t10" class="pln"><span class="n"><a href="#t10">10</a></span><span class="t"><span class="com"># Counting Sort > Merge sort > Quick sort > Sellection sort = Odd-even sort = Bubble sort</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t11" class="pln"><span class="n"><a href="#t11">11</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t12" class="pln"><span class="n"><a href="#t12">12</a></span><span class="t"><span class="com"># 1. Bubble sort</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t13" class="pln"><span class="n"><a href="#t13">13</a></span><span class="t"><span class="com"># Bubble sort l&#224; 1 thu&#7853;t to&#225;n sort. &#272;&#226;y l&#224; ph&#432;&#417;ng ph&#225;p sort b&#7857;ng c&#225;ch v&#7915;a so s&#225;nh k&#237;ch c&#7905; c&#7911;a c&#225;c y&#7871;u t&#7889; c&#243; ph&#249; h&#7907;p v&#7899;i ph&#7847;n t&#7917; b&#234;n c&#7841;nh kh&#244;ng v&#7915;a s&#7855;p x&#7871;p ch&#250;ng l&#7841;i. X&#233;t v&#7873; th&#7901;i gian t&#237;nh to&#225;n th&#236; O(n2)O(n2) kh&#225; l&#224; CH&#7852;M, nh&#432;ng do &#273;&#226;y l&#224; thu&#7853;t to&#225;n &#272;&#416;N GI&#7842;N, c&#225;ch l&#224;m d&#7877;, h&#417;n n&#7919;a n&#243; g&#7847;n v&#7899;i x&#7917; l&#253; song song n&#234;n th&#432;&#7901;ng &#273;&#432;&#7907;c s&#7917; d&#7909;ng. N&#243; &#273;&#432;&#7907;c g&#7885;i l&#224; Sort n&#7897;i b&#7897; &#7893;n &#273;&#7883;nh, hay c&#243; c&#225;c c&#225;ch g&#7885;i kh&#225;c nh&#432; Ph&#432;&#417;ng ph&#225;p exchange c&#417; b&#7843;n, Ph&#432;&#417;ng ph&#225;p trao &#273;&#7893;i li&#7873;n k&#7873;.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t14" class="pln"><span class="n"><a href="#t14">14</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t15" class="pln"><span class="n"><a href="#t15">15</a></span><span class="t"><span class="com"># bubblesort(N)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t16" class="pln"><span class="n"><a href="#t16">16</a></span><span class="t"><span class="com">#   for i = 0 to N.length-1</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t17" class="pln"><span class="n"><a href="#t17">17</a></span><span class="t"><span class="com">#     for j = 0 to N.length-1-i</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t18" class="pln"><span class="n"><a href="#t18">18</a></span><span class="t"><span class="com">#       if N[j] &lt; N[j-1]</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t19" class="pln"><span class="n"><a href="#t19">19</a></span><span class="t"><span class="com">#         swap N[j] and N[j-1]</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t20" class="pln"><span class="n"><a href="#t20">20</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t21" class="pln"><span class="n"><a href="#t21">21</a></span><span class="t"><span class="com"># 2. Sellection sort</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t22" class="pln"><span class="n"><a href="#t22">22</a></span><span class="t"><span class="com"># Selection sort l&#224; 1 thu&#7853;t to&#225;n t&#236;m gi&#225; tr&#7883; l&#7899;n nh&#7845;t ho&#7863;c nh&#7887; nh&#7845;t t&#7915; c&#225;c ph&#7847;n t&#7917; v&#224; thay th&#7871; v&#7899;i ph&#7847;n t&#7917; cu&#7889;i c&#249;ng c&#7911;a d&#227;y. X&#233;t v&#7873; th&#7901;i gian t&#237;nh to&#225;n th&#236; O(n2)O(n2) kh&#225; l&#224; ch&#7853;m, nh&#432;ng do thu&#7853;t to&#225;n &#273;&#417;n gi&#7843;n, c&#225;ch l&#224;m d&#7877; n&#234;n th&#432;&#7901;ng &#273;&#432;&#7907;c s&#7917; d&#7909;ng. &#272;&#226;y kh&#244;ng ph&#7843;i l&#224; sort &#7893;n &#273;&#7883;nh. &#272;&#226;y l&#224; thu&#7853;t to&#225;n ch&#7885;n ph&#7847;n t&#7917; nh&#7887; nh&#7845;t trong chu&#7895;i, di chuy&#7875;n n&#243; &#273;&#7871;n ph&#237;a b&#234;n tr&#225;i (C&#7909; th&#7875; l&#224; v&#7883; tr&#237; key). R&#7845;t d&#7877; hi&#7875;u &#273;&#250;ng kh&#244;ng?</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t23" class="pln"><span class="n"><a href="#t23">23</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t24" class="pln"><span class="n"><a href="#t24">24</a></span><span class="t"><span class="com"># SelectionSort(A)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t25" class="pln"><span class="n"><a href="#t25">25</a></span><span class="t"><span class="com"># for i = 0 to A.length-1</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t26" class="pln"><span class="n"><a href="#t26">26</a></span><span class="t"><span class="com">#   mini = i</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t27" class="pln"><span class="n"><a href="#t27">27</a></span><span class="t"><span class="com">#   for j = i to A.length-1</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t28" class="pln"><span class="n"><a href="#t28">28</a></span><span class="t"><span class="com">#     if A[j] &lt; A[mini]</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t29" class="pln"><span class="n"><a href="#t29">29</a></span><span class="t"><span class="com">#         mini = j</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t30" class="pln"><span class="n"><a href="#t30">30</a></span><span class="t"><span class="com">#   swap A[i] and A[mini]</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t31" class="pln"><span class="n"><a href="#t31">31</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t32" class="pln"><span class="n"><a href="#t32">32</a></span><span class="t"><span class="com"># 4. Merge sort</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t33" class="pln"><span class="n"><a href="#t33">33</a></span><span class="t"><span class="com"># Merde sort l&#224; 1 thu&#7853;t to&#225;n sort b&#7857;ng c&#225;ch, n&#7871;u khi merge nhi&#7873;u ph&#7847;n t&#7917; &#273;&#227; &#273;&#432;&#7907;c s&#7855;p x&#7871;p s&#7861;n v&#224;o 1 d&#227;y m&#224; s&#7855;p x&#7871;p theo th&#7913; t&#7921; t&#7915; nh&#7887; &#273;&#7871;n l&#7899;n, th&#236; d&#227;y m&#7899;i c&#361;ng &#273;&#432;&#7907;c s&#7855;p x&#7871;p l&#7841;i. Khi sort c&#225;c array c&#243; ch&#7913;a data nn ph&#7847;n t&#7917;, th&#236; l&#432;&#7907;ng t&#237;nh to&#225;n t&#7879; nh&#7845;t l&#224; O(nlogn)O(nlogn). Th&#7921;c t&#7871; c&#361;ng t&#249;y thu&#7897;c v&#224;o c&#225;ch l&#224;m ph&#226;n chia hay t&#237;ch h&#7907;p, nh&#432;ng th&#244;ng th&#432;&#7901;ng th&#236; c&#243; th&#7875; sort &#7893;n &#273;&#7883;nh. In-place sort c&#361;ng &#273;&#432;&#7907;c &#273;&#432;a ra, nh&#432;ng th&#432;&#7901;ng th&#236; c&#7847;n c&#243; l&#432;u tr&#7919; b&#234;n ngo&#224;i O(n)O(n).</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t34" class="pln"><span class="n"><a href="#t34">34</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t35" class="pln"><span class="n"><a href="#t35">35</a></span><span class="t"><span class="com"># 5. Quick Sort</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t36" class="pln"><span class="n"><a href="#t36">36</a></span><span class="t"><span class="com"># Quick sort l&#224; thu&#7853;t to&#225;n &#273;&#432;&#7907;c ph&#225;t tri&#7875;n b&#7903;i nh&#224; khoa h&#7885;c m&#225;y t&#237;nh Charles Antony Richard Hoare v&#224;o n&#259;m 1960. L&#432;&#7907;ng t&#237;nh to&#225;n t&#7889;t nh&#7845;t v&#224; t&#237;nh to&#225;n trung b&#236;nh l&#224; O(nlogn)O(nlogn). So v&#7899;i c&#225;c ph&#432;&#417;ng ph&#225;p sort kh&#225;c th&#236; &#273;&#226;y &#273;&#432;&#7907;c coi l&#224; ph&#432;&#417;ng ph&#225;p nhanh nh&#7845;t, tuy nhi&#234;n kh&#244;ng ph&#7843;i do s&#7889; data hay c&#225;ch s&#7855;p x&#7871;p c&#225;c &#273;&#7889;i t&#432;&#7907;ng th&#236; s&#7869; nhanh, l&#432;&#7907;ng t&#237;nh to&#225;n t&#7879; nh&#7845;t l&#224; O(n2)O(n2). &#272;&#226;y kh&#244;ng ph&#7843;i l&#224; ki&#7875;u sort &#7893;n &#273;&#7883;nh.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t37" class="pln"><span class="n"><a href="#t37">37</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t38" class="pln"><span class="n"><a href="#t38">38</a></span><span class="t"><span class="com"># Partition(A, p, r)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t39" class="pln"><span class="n"><a href="#t39">39</a></span><span class="t"><span class="com">#   x = A[r]</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t40" class="pln"><span class="n"><a href="#t40">40</a></span><span class="t"><span class="com">#   i = p-1</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t41" class="pln"><span class="n"><a href="#t41">41</a></span><span class="t"><span class="com">#   for j = p to r-1</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t42" class="pln"><span class="n"><a href="#t42">42</a></span><span class="t"><span class="com">#     do if A[j] &lt;= x</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t43" class="pln"><span class="n"><a href="#t43">43</a></span><span class="t"><span class="com">#       then i = i+1</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t44" class="pln"><span class="n"><a href="#t44">44</a></span><span class="t"><span class="com">#         exchange A[i] and A[j] </span>&nbsp;</span><span class="r"></span></p>
+    <p id="t45" class="pln"><span class="n"><a href="#t45">45</a></span><span class="t"><span class="com">#   exchange A[i+1] and A[r]</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t46" class="pln"><span class="n"><a href="#t46">46</a></span><span class="t"><span class="com">#   return i+1</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t47" class="pln"><span class="n"><a href="#t47">47</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t48" class="pln"><span class="n"><a href="#t48">48</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t49" class="pln"><span class="n"><a href="#t49">49</a></span><span class="t"><span class="com"># Quicksort(A, p, r)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t50" class="pln"><span class="n"><a href="#t50">50</a></span><span class="t"><span class="com">#   if p &lt; r</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t51" class="pln"><span class="n"><a href="#t51">51</a></span><span class="t"><span class="com">#     then q = Partition(A, p, r)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t52" class="pln"><span class="n"><a href="#t52">52</a></span><span class="t"><span class="com">#       run Quicksort(A, p, q-1)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t53" class="pln"><span class="n"><a href="#t53">53</a></span><span class="t"><span class="com">#       run Quicksort(A, q+1, r)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t54" class="pln"><span class="n"><a href="#t54">54</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t55" class="pln"><span class="n"><a href="#t55">55</a></span><span class="t"><span class="com"># from bubblesort import bubbleSort</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t56" class="pln"><span class="n"><a href="#t56">56</a></span><span class="t"><span class="com"># from mergesort import mergeSort</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t57" class="pln"><span class="n"><a href="#t57">57</a></span><span class="t"><span class="com"># from quicksort import quickSort</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t58" class="pln"><span class="n"><a href="#t58">58</a></span><span class="t"><span class="com"># from selectionsort import selectionSort</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t59" class="pln"><span class="n"><a href="#t59">59</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t60" class="pln"><span class="n"><a href="#t60">60</a></span><span class="t"><span class="com"># from lutils.algos.sorts import *</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t61" class="pln"><span class="n"><a href="#t61">61</a></span><span class="t"><span class="com"># from lutils.algos.searches import *</span>&nbsp;</span><span class="r"></span></p>
+</div>
+<div id="footer">
+    <div class="content">
+        <p>
+            <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v5.2.1</a>,
+            created at 2020-07-27 13:31 +0700
+        </p>
+    </div>
+</div>
+</body>
+</html>

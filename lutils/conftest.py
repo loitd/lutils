@@ -25,6 +25,7 @@
 # https://docs.pytest.org/en/latest/fixture.html#conftest-py-sharing-fixture-functions
 # config test file
 import pytest
+from lutils.utils import LServer
 
 @pytest.fixture(scope="session")
 def common_connection():
@@ -40,4 +41,13 @@ def common_connection():
     """
     # print("common_connection fixture is called")
     return "common_connection"
+
+@pytest.fixture(scope="session")
+def common_lserver():
+    """
+    Common LServer object.
+    """
+    _server = LServer()
+    # print("common_connection fixture is called")
+    return _server
 

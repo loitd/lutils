@@ -1,5 +1,5 @@
 import pytest
-from lutils.utils import printlog, printwait, getweekday, datetimestr, yesterday, backto, yesterdaystr, backtostr, firstdayofthismonth
+from lutils.utils import printlog, printwait, getweekday, datetimestr, yesterday, backto, yesterdaystr, backtostr, firstdayofthismonth, thismonthstr, previousmonth, previousmonthstr, nextmonth, nextmonthstr, checkpems
 from os.path import isfile
 from datetime import datetime
 
@@ -31,6 +31,32 @@ def test_firstdayofthismonth():
     _obj1 = datetime.strptime('2020/09/01 01:55:19', '%Y/%m/%d %H:%M:%S')
     assert firstdayofthismonth(thedate=_obj) == _obj1
     
+def test_thismonthstr():
+    _obj = datetime.strptime('2020/09/20 01:55:19', '%Y/%m/%d %H:%M:%S')
+    assert thismonthstr(thedate=_obj) == '2020/09'
+    
+def test_previousmonth():
+    _obj = datetime.strptime('2020/09/20 01:55:19', '%Y/%m/%d %H:%M:%S')
+    _obj1 = datetime.strptime('2020/08/31 01:55:19', '%Y/%m/%d %H:%M:%S')
+    assert previousmonth(thedate=_obj) == _obj1
+
+def test_previousmonthstr():
+    _obj = datetime.strptime('2020/09/20 01:55:19', '%Y/%m/%d %H:%M:%S')
+    assert previousmonthstr(thedate=_obj) == '2020/08'
+
+def test_nextmonth():
+    _obj = datetime.strptime('2020/09/20 01:55:19', '%Y/%m/%d %H:%M:%S')
+    _obj1 = datetime.strptime('2020/10/02 01:55:19', '%Y/%m/%d %H:%M:%S')
+    assert nextmonth(thedate=_obj) == _obj1
+
+def test_nextmonthstr():
+    _obj = datetime.strptime('2020/09/20 01:55:19', '%Y/%m/%d %H:%M:%S')
+    assert nextmonthstr(thedate=_obj) == '2020/10'
+    
+def test_checkpems():
+    _token = "just a test token"
+    assert checkpems(token=_token) == False
+    
 def test_printlog(capsys, tmpdir):
     _msg = "[test_printlog] Yes"
     # _logfile = tmpdir.join("test_printlog.log")
@@ -50,7 +76,7 @@ def test_printwait(capsys, tmpdir):
     out, err = capsys.readouterr()
     assert "{0} ..".format(_msg) in out # a space between _msg and dots
     assert isfile(_logfile)
-    
+
 class TestLutils:
     def test_getweekday(self):
         date_time_str = '24/07/2020 01:55:19'

@@ -25,6 +25,7 @@ and then:
 - Backward compatible with Python 2.7 (recommended for 2.x) from version 2.10.2.1. From 2.10.2.1, lutils works on both 2.x and 3.x
 - Any suggestions are welcome with pull request or email at loitranduc[at]gmail.com
 - Introduction or guide (docs) if available will be at [https://github.com/loitd/lutils/](https://github.com/loitd/lutils/)  
+
 ## Usage
 In your python file:  
 ~~~

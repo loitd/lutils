@@ -66,10 +66,12 @@ srv.getdiskspace()"""
             return buff #return UNICODE String
         except socket.timeout:
             printlog("[getfeedback] Time out while waiting for response from server. Program will exits.")
-            sys.exit(1)
+            return False
+            # sys.exit(1)
         except Exception as e:
-            raise(e)
-            # printlog(e)
+            # raise(e)
+            printlog("[getfeedback] {0}".format(e))
+            return False
             # sys.exit(1)
     
     def getfeedbackASCII(self, regcode = ']#', debug=False):
@@ -86,9 +88,8 @@ srv.getdiskspace()"""
             printlog("[getfeedback] Time out while waiting for response from server. Program will exits.")
             sys.exit(1)
         except Exception as e:
-            raise(e)
-            # printlog(e)
-            # sys.exit(1)
+            printlog("[getfeedbackASCII] {0}".format(e))
+            return False
     
     def runcmd(self, cmd, regcode=']#', debug=False):
         try:
@@ -101,7 +102,9 @@ srv.getdiskspace()"""
                 # printlog(r1)
                 return r1
         except Exception as e:
-            raise(e)
+            printlog("[runcmd] {0}".format(e))
+        # if any other
+        return False
     
     def  getdiskspace(self, cmd="df -h\n"):
         if self.chan is not None:
