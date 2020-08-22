@@ -1,11 +1,17 @@
+# Time complexity: O(n*log(n))
+# Space complexity: O(log(n))
 # Here to illustrate Quick Sort algorithm
-def movingAround(arr, start, end):
+def partition(arr, start, end):
     """Moving elements to left and right to pivot to make sure arr[pi] is at the right position
 Input: 
     - arr: array to be sorted
     - start: start position/index
     - end: end position/index
 Return: pi"""
+    # ----_small-----start--------------------end-----------
+    #----------------a[i]-------small---------a[i]----end--
+    #----------------a[i]-------end(pivot)----a[i]---------
+    # Return _small = positiion of Pivot = new position of end value
     _pi = arr[end] #pivot as last element
     _small = start - 1 # smaller index indicator (=0 at the start)
     for i in range(start, end):
@@ -31,7 +37,7 @@ Return: None
 This quick sort will get last element value as pivot"""
     if start < end:
         # there're more than 1 element in the arr
-        pipos = movingAround(arr, start, end)
+        pipos = partition(arr, start, end)
         # do the sort again with 2 halves
         quickSort(arr, start, pipos-1)
         quickSort(arr, pipos+1, end)

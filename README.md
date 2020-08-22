@@ -61,3 +61,6 @@ Easy upload with keyring:
 
 CI/CD Automated with Pytest and Circle CI
 * `https://app.circleci.com/pipelines/github/loitd/lutils`
+
+## License
+* [License](https://github.com/loitd/lutils/blob/master/LICENSE)

@@ -1,44 +1,38 @@
-# https://medium.com/tuanbinhblog/8-thu%E1%BA%ADt-to%C3%A1n-s%E1%BA%AFp-x%E1%BA%BFp-ph%E1%BB%95-bi%E1%BA%BFn-trong-java-2c39de4272ce
-# https://miro.medium.com/max/500/1*k5EJ5ZWXgxDSLjsLQKjmvA.png
-# https://www.educative.io/edpresso/merge-sort-in-python
-
-def mergeSort(arr):
-    """Implement Merge Sort in Python"""
-    if len(arr) > 1:
-        # Split to 2 halves
-        _mid = len(arr)//2
-        _left = arr[:_mid]
-        _right = arr[_mid:]
+# https://www.programiz.com/dsa/merge-sort
+def mergeSort(a1):
+    # Time complexity: O(n*log(n))
+    # Space complexity: O(n)
+    n = len(a1)
+    if n>1:
+        mid = n//2
+        rig = a1[:mid]
+        lef = a1[mid:]
         
-        # recursive for _left and _right
-        mergeSort(_left)
-        mergeSort(_right)
+        # recursive
+        mergeSort(rig)
+        mergeSort(lef)
+        # finish this step, all a1 has been splitted to single elements
         
-        # Init counter
-        i,j,k = 0,0,0
-        
-        while i < len(_left) and j < len(_right):
-            if _left[i] < _right[j]:
-                # use smaller one
-                arr[k] = _left[i]
-                i += 1
-                k += 1
+        i=k=j=0
+        # now sort and merge back
+        while i<len(lef) and j<len(rig):
+            if lef[i] < rig[j]:
+                a1[k] = lef[i]
+                i +=1
             else:
-                arr[k] = _right[j]
-                j += 1
-                k += 1
+                a1[k] = rig[j]
+                j+=1
+            k+=1
         
-        # For all remaining value, move to the end
-        while i < len(_left):
-            arr[k] = _left[i]
-            i += 1
-            k += 1
-        
-        # For all remaining value, move to the end
-        while j < len(_right):
-            arr[k] = _right[j]
-            j += 1
-            k += 1
+        # collect everything left
+        while i<len(lef):
+            a1[k] = lef[i]
+            i+=1
+            k+=1
+        while j<len(rig):
+            a1[k] = rig[j]
+            j+=1
+            k+=1
 
 
 if __name__ == "__main__":
