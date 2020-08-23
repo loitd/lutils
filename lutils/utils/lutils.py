@@ -129,26 +129,27 @@ def printx(content, filepath="./log.txt"):
 # 2.11.3 added wend param
 # 2.11.4 added wbegin param
 # 2.11.5 added toscreen & tologfile options
+# 2.11.74 fix fixed length slice error
 def printlog(content, filepath="./log.txt", wrmode="a+", encode="utf-8", onlycontent=False, wbegin="", wend="\r\n", toscreen=True, tologfile=True):
     """Print to screen output AND write to log file. Added from version 1.0.
     By default log file path is: ./log.txt"""
     try:
         # Writing mode
-        cname = platform.node()[:10]
-        tname = threading.currentThread().getName()[:5]
+        cname = platform.node()
+        tname = threading.currentThread().getName()
         content = u"{0}".format(content) #.encode("utf8")
         # Print on screen
         if onlycontent:
                 if toscreen: print("{0}".format(content))
         else:
-                if toscreen: print("[{0}][{1}][{2}]: {3}".format(cname, tname, datetimestr(),content))
+                if toscreen: print("[{0:10}][{1:10s}][{2}]: {3}".format(cname, tname, datetimestr(),content))
         # Write to logs
         if sys.version_info >= (3,0) and tologfile:
                 with open(filepath, wrmode, encoding=encode) as fh:
                         if onlycontent:
                                 fh.write("{0}{1}{2}".format(wbegin, content, wend))
                         else:
-                                fh.write("{5}[{0}][{1}][{2}]: {3}{4}".format(cname, tname, datetimestr(), content, wend, wbegin))
+                                fh.write("{5}[{0:10}][{1:10}][{2}]: {3}{4}".format(cname, tname, datetimestr(), content, wend, wbegin))
                         # flush
                         fh.flush()
                         os.fsync(fh.fileno())
@@ -159,7 +160,7 @@ def printlog(content, filepath="./log.txt", wrmode="a+", encode="utf-8", onlycon
                         if onlycontent:
                                 fh.write("{0}{1}{2}".format(wbegin, content, wend))
                         else:
-                                fh.write("{5}[{0}][{1}][{2}]: {3}{4}".format(cname, tname, datetimestr(), content, wend, wbegin))
+                                fh.write("{5}[{0:10}][{1:10}][{2}]: {3}{4}".format(cname, tname, datetimestr(), content, wend, wbegin))
         # all done
     except Exception as e:
         raise(e)
@@ -173,15 +174,15 @@ def printwait(content, timewait, filepath="./log.txt", end="", sym=".", ack=True
         printwait("Hello", 10, sym="+", ackstep=3, stepinsec=1) 
         => [DESKTOP-KG][MainT][2020/05/22 16:20:10]: Hello +(9)++(6)++(3)++"""
         try:
-                cname = platform.node()[:10]
-                tname = threading.currentThread().getName()[:5]
+                cname = platform.node()
+                tname = threading.currentThread().getName()
                 content = u"{0}".format(content) #.encode("utf8")
                 sym = u"{0}".format(sym)
                 # version 3+ and 2.x are different
-                if toscreen: print("[{0}][{1}][{2}]: {3} ".format(cname, tname, datetimestr(),content), end=end, flush=True)
+                if toscreen: print("[{0:10s}][{1:10s}][{2}]: {3} ".format(cname, tname, datetimestr(),content), end=end, flush=True)
                 if tologfile:
                         with open(filepath, "a+", encoding=encode, newline='') as fh:
-                                fh.write("[{0}][{1}][{2}]: {3} ".format(cname, tname, datetimestr(), content))
+                                fh.write("[{0:10}][{1:10}][{2}]: {3} ".format(cname, tname, datetimestr(), content))
                                 # first do f.flush(), and then do os.fsync(f.fileno()), 
                                 # to ensure that all internal buffers associated with f are written to disk.
                                 fh.flush()
